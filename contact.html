@@ -4,362 +4,270 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Demo — Get a Free Quote</title>
-  <meta name="description" content="Request a free landscaping estimate from Verdant Lawn Care Tell us about your project and we'll get back to you within one business day.">
+  <meta name="description" content="Request a free lawn care estimate. Mowing, hedge trimming, leaf removal, fertilization and more. We respond within 24 hours.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: { extend: {
-        colors: { forest: { DEFAULT: '#0B2416', mid: '#1B4332', light: '#2D6A4F', pale: '#40916C' }, gold: { DEFAULT: '#C9A84C', light: '#DDB96B' }, cream: { DEFAULT: '#F7F5EE', dark: '#E8E5D8' } },
-        fontFamily: { display: ['"Cormorant Garamond"', 'serif'] }
+        colors: {
+          green: { dark: '#0B3D1E', mid: '#145A32', base: '#1E8449', light: '#27AE60', pale: '#A9DFBF' },
+          gold:  { DEFAULT: '#F0A500', light: '#F5C842' },
+          cream: '#F9F9F4'
+        },
+        fontFamily: { head: ['Montserrat', 'sans-serif'], body: ['"Open Sans"', 'sans-serif'] }
       }}
     }
   </script>
   <style>
-    * { font-family: 'DM Sans', sans-serif; }
-    .font-display { font-family: 'Cormorant Garamond', serif; }
-    ::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-track { background: #0B2416; } ::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 3px; }
-    .nav-glass { background: rgba(11,36,22,0.97); backdrop-filter: blur(12px); box-shadow: 0 2px 30px rgba(0,0,0,0.4); }
-    .gold-btn { background: linear-gradient(135deg,#C9A84C 0%,#DDB96B 50%,#C9A84C 100%); background-size: 200% 200%; transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease; }
-    .gold-btn:hover { background-position: right center; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.45); }
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    * { font-family: 'Open Sans', sans-serif; }
+    h1, h2, h3, h4, .font-head { font-family: 'Montserrat', sans-serif; }
+    ::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-track { background: #0B3D1E; } ::-webkit-scrollbar-thumb { background: #F0A500; border-radius: 3px; }
+    .nav-solid { background: rgba(11,61,30,0.97); backdrop-filter: blur(10px); }
+    .gold-btn { background: linear-gradient(135deg,#F0A500,#F5C842,#F0A500); background-size: 200%; transition: background-position 0.4s, transform 0.2s, box-shadow 0.3s; }
+    .gold-btn:hover { background-position: right; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(240,165,0,0.4); }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .fade-up.in { opacity: 1; transform: translateY(0); }
-    .form-field { transition: border-color 0.2s ease, box-shadow 0.2s ease; }
-    .form-field:focus { outline: none; border-color: #2D6A4F; box-shadow: 0 0 0 3px rgba(45,106,79,0.12); }
-    .radio-option { transition: border-color 0.2s ease, background 0.2s ease; }
-    .radio-option:has(input:checked) { border-color: #1B4332; background: rgba(27,67,50,0.06); }
+    .form-input { width: 100%; background: #fff; border: 1.5px solid #d1d5db; border-radius: 10px; padding: 12px 16px; font-size: 15px; color: #0B3D1E; transition: border-color 0.25s, box-shadow 0.25s; outline: none; }
+    .form-input:focus { border-color: #F0A500; box-shadow: 0 0 0 3px rgba(240,165,0,0.15); }
+    .form-label { display: block; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 13px; color: #145A32; margin-bottom: 6px; letter-spacing: 0.02em; }
   </style>
 </head>
-<body class="bg-cream text-forest overflow-x-hidden">
+<body class="bg-cream text-green-dark overflow-x-hidden">
 
   <!-- NAV -->
-  <nav class="nav-glass fixed top-0 left-0 right-0 z-50 px-6 lg:px-12">
-    <div class="max-w-7xl mx-auto flex items-center justify-between h-20">
-      <a href="index.html" class="flex items-center"><div class="border-2 border-gold/60 rounded-lg px-4 py-2 bg-white/5"><span class="font-bold text-gold text-sm tracking-widest uppercase" style="font-family:Montserrat,sans-serif">[ YOUR LOGO ]</span></div></a>
-      <div class="hidden lg:flex items-center gap-8">
-        <a href="index.html" class="text-white/80 text-sm font-medium hover:text-gold transition-colors">Home</a>
-        <a href="services.html" class="text-white/80 text-sm font-medium hover:text-gold transition-colors">Services</a>
-        <a href="about.html" class="text-white/80 text-sm font-medium hover:text-gold transition-colors">About</a>
-        <a href="gallery.html" class="text-white/80 text-sm font-medium hover:text-gold transition-colors">Gallery</a>
-        <a href="contact.html" class="text-white text-sm font-medium border-b border-gold pb-0.5">Contact</a>
+  <nav class="nav-solid fixed top-0 left-0 right-0 z-50 px-5 lg:px-10">
+    <div class="max-w-6xl mx-auto flex items-center justify-between h-[68px]">
+      <a href="index.html">
+        <div class="border-2 border-gold/60 rounded-lg px-4 py-2">
+          <span class="font-head font-bold text-gold text-sm tracking-widest uppercase">[ YOUR LOGO ]</span>
+        </div>
+      </a>
+      <div class="hidden lg:flex items-center gap-7">
+        <a href="index.html"    class="text-white/75 text-sm font-head font-semibold hover:text-white transition-colors">Home</a>
+        <a href="services.html" class="text-white/75 text-sm font-head font-semibold hover:text-white transition-colors">Services</a>
+        <a href="about.html"    class="text-white/75 text-sm font-head font-semibold hover:text-white transition-colors">About</a>
+        <a href="gallery.html"  class="text-white/75 text-sm font-head font-semibold hover:text-white transition-colors">Gallery</a>
+        <a href="contact.html"  class="text-white   text-sm font-head font-semibold border-b-2 border-gold pb-0.5">Contact</a>
       </div>
       <div class="hidden lg:flex items-center gap-4">
-        <a href="tel:1234567890" class="text-white/70 text-sm hover:text-gold transition-colors">(123) 456-7890</a>
-        <a href="contact.html" class="gold-btn text-forest font-semibold text-sm px-6 py-3 rounded-full">Get Free Quote</a>
+        <a href="tel:1234567890" class="flex items-center gap-2 text-white/80 text-sm font-semibold hover:text-gold transition-colors">
+          <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+          (123) 456-7890
+        </a>
+        <a href="contact.html" class="gold-btn font-head font-bold text-green-dark text-sm px-6 py-2.5 rounded-full">Free Quote</a>
       </div>
       <button id="mobile-toggle" class="lg:hidden text-white p-2">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden lg:hidden bg-forest/98 pb-6 px-6 border-t border-white/10">
-      <div class="flex flex-col gap-4 pt-6">
-        <a href="index.html" class="text-white font-medium text-lg hover:text-gold">Home</a>
-        <a href="services.html" class="text-white/80 font-medium text-lg hover:text-gold">Services</a>
-        <a href="about.html" class="text-white/80 font-medium text-lg hover:text-gold">About</a>
-        <a href="gallery.html" class="text-white/80 font-medium text-lg hover:text-gold">Gallery</a>
-        <a href="contact.html" class="text-gold font-medium text-lg">Contact</a>
+    <div id="mobile-menu" class="hidden lg:hidden bg-green-dark border-t border-white/10 pb-5 px-5">
+      <div class="flex flex-col gap-4 pt-5">
+        <a href="index.html"    class="text-white/80 font-head font-semibold text-base hover:text-gold">Home</a>
+        <a href="services.html" class="text-white/80 font-head font-semibold text-base hover:text-gold">Services</a>
+        <a href="about.html"    class="text-white/80 font-head font-semibold text-base hover:text-gold">About</a>
+        <a href="gallery.html"  class="text-white/80 font-head font-semibold text-base hover:text-gold">Gallery</a>
+        <a href="contact.html"  class="text-gold font-head font-semibold text-base">Contact</a>
+        <div class="border-t border-white/10 pt-4">
+          <a href="contact.html" class="gold-btn inline-block font-head font-bold text-green-dark text-sm px-7 py-3 rounded-full">Get Free Quote</a>
+        </div>
       </div>
     </div>
   </nav>
 
   <!-- PAGE HERO -->
-  <section class="relative pt-36 pb-20 bg-forest overflow-hidden">
-    <div class="absolute inset-0 opacity-10" style="background-image:url('images/mowing-crew-1.png'); background-size:cover; background-position:center;"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-forest via-forest/90 to-transparent"></div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-      <div class="flex items-center gap-2 text-gold/80 text-sm mb-4">
-        <a href="index.html" class="hover:text-gold">Home</a>
-        <span>/</span><span class="text-gold">Contact</span>
+  <section class="bg-green-dark pt-36 pb-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20" style="background-image:url('images/team-on-lawn.png'); background-size:cover; background-position:center;"></div>
+    <div class="absolute inset-0" style="background:linear-gradient(to right, rgba(11,61,30,0.95), rgba(11,61,30,0.7));"></div>
+    <div class="max-w-6xl mx-auto px-5 lg:px-10 relative z-10">
+      <div class="flex items-center gap-2 text-gold/70 text-sm mb-4 font-head font-semibold">
+        <a href="index.html" class="hover:text-gold transition-colors">Home</a><span>/</span><span class="text-gold">Contact</span>
       </div>
-      <h1 class="font-display font-semibold text-5xl lg:text-6xl text-white leading-tight mb-4">Get Your Free Estimate</h1>
-      <p class="text-white/65 text-lg max-w-xl">Fill out the form below and we'll reach out within one business day to schedule your free on-site estimate — no obligation, no pressure.</p>
+      <h1 class="font-head font-extrabold text-5xl lg:text-6xl text-white leading-tight mb-4">Get Your<br>Free Estimate</h1>
+      <p class="text-white/65 text-lg max-w-xl leading-relaxed">Fill out the form and we'll get back to you within 24 hours with a straight quote — no pressure, no commitment.</p>
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
-  <section class="py-20 lg:py-28 bg-white">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12">
-      <div class="grid lg:grid-cols-5 gap-12 lg:gap-16">
+  <!-- FORM + CONTACT INFO -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-5 lg:px-10">
+      <div class="grid lg:grid-cols-[1fr_380px] gap-12 lg:gap-16 items-start fade-up">
 
-        <!-- FORM (left 3 cols) -->
-        <div class="lg:col-span-3 fade-up">
-          <form id="quote-form" class="space-y-6" onsubmit="handleSubmit(event)">
-            <!-- Name + Phone -->
+        <!-- FORM -->
+        <div class="bg-cream rounded-2xl p-8 lg:p-10 shadow-[0_4px_30px_rgba(11,61,30,0.08)]">
+          <h2 class="font-head font-extrabold text-2xl text-green-dark mb-2">Request a Quote</h2>
+          <p class="text-green-dark/55 text-sm mb-8">We'll contact you within 24 hours to confirm details and send your estimate.</p>
+
+          <form id="quote-form" onsubmit="submitForm(event)" class="space-y-5">
             <div class="grid sm:grid-cols-2 gap-5">
               <div>
-                <label class="block text-sm font-semibold text-forest mb-2">Full Name <span class="text-red-500">*</span></label>
-                <input type="text" required placeholder="John Smith" class="form-field w-full bg-cream border border-cream-dark rounded-xl px-4 py-3.5 text-forest placeholder:text-forest/40 text-sm">
+                <label class="form-label">Your Name *</label>
+                <input name="name" type="text" placeholder="John Smith" class="form-input" required>
               </div>
               <div>
-                <label class="block text-sm font-semibold text-forest mb-2">Phone Number <span class="text-red-500">*</span></label>
-                <input type="tel" required placeholder="(555) 000-0000" class="form-field w-full bg-cream border border-cream-dark rounded-xl px-4 py-3.5 text-forest placeholder:text-forest/40 text-sm">
+                <label class="form-label">Phone Number *</label>
+                <input name="phone" type="tel" placeholder="(555) 000-0000" class="form-input" required>
               </div>
             </div>
-
-            <!-- Email + Zip -->
-            <div class="grid sm:grid-cols-2 gap-5">
-              <div>
-                <label class="block text-sm font-semibold text-forest mb-2">Email Address <span class="text-red-500">*</span></label>
-                <input type="email" required placeholder="john@example.com" class="form-field w-full bg-cream border border-cream-dark rounded-xl px-4 py-3.5 text-forest placeholder:text-forest/40 text-sm">
-              </div>
-              <div>
-                <label class="block text-sm font-semibold text-forest mb-2">Zip Code</label>
-                <input type="text" placeholder="00000" class="form-field w-full bg-cream border border-cream-dark rounded-xl px-4 py-3.5 text-forest placeholder:text-forest/40 text-sm">
-              </div>
-            </div>
-
-            <!-- Service Type -->
             <div>
-              <label class="block text-sm font-semibold text-forest mb-3">Service Needed <span class="text-red-500">*</span></label>
-              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                <label class="radio-option flex items-center gap-2.5 border border-cream-dark rounded-xl px-4 py-3 cursor-pointer">
-                  <input type="radio" name="service" value="lawn" class="text-forest-light accent-forest-light">
-                  <span class="text-sm text-forest">Lawn Mowing</span>
-                </label>
-                <label class="radio-option flex items-center gap-2.5 border border-cream-dark rounded-xl px-4 py-3 cursor-pointer">
-                  <input type="radio" name="service" value="design" class="accent-forest-light">
-                  <span class="text-sm text-forest">Landscape Design</span>
-                </label>
-                <label class="radio-option flex items-center gap-2.5 border border-cream-dark rounded-xl px-4 py-3 cursor-pointer">
-                  <input type="radio" name="service" value="mulching" class="accent-forest-light">
-                  <span class="text-sm text-forest">Mulching & Beds</span>
-                </label>
-                <label class="radio-option flex items-center gap-2.5 border border-cream-dark rounded-xl px-4 py-3 cursor-pointer">
-                  <input type="radio" name="service" value="trimming" class="accent-forest-light">
-                  <span class="text-sm text-forest">Tree Trimming</span>
-                </label>
-                <label class="radio-option flex items-center gap-2.5 border border-cream-dark rounded-xl px-4 py-3 cursor-pointer">
-                  <input type="radio" name="service" value="irrigation" class="accent-forest-light">
-                  <span class="text-sm text-forest">Irrigation</span>
-                </label>
-                <label class="radio-option flex items-center gap-2.5 border border-cream-dark rounded-xl px-4 py-3 cursor-pointer">
-                  <input type="radio" name="service" value="other" class="accent-forest-light">
-                  <span class="text-sm text-forest">Other / Multiple</span>
-                </label>
-              </div>
+              <label class="form-label">Email Address *</label>
+              <input name="email" type="email" placeholder="you@email.com" class="form-input" required>
             </div>
-
-            <!-- Property Type -->
             <div>
-              <label class="block text-sm font-semibold text-forest mb-3">Property Type</label>
-              <div class="grid grid-cols-3 gap-3">
-                <label class="radio-option flex items-center gap-2.5 border border-cream-dark rounded-xl px-4 py-3 cursor-pointer">
-                  <input type="radio" name="property" value="residential" class="accent-forest-light">
-                  <span class="text-sm text-forest">Residential</span>
-                </label>
-                <label class="radio-option flex items-center gap-2.5 border border-cream-dark rounded-xl px-4 py-3 cursor-pointer">
-                  <input type="radio" name="property" value="commercial" class="accent-forest-light">
-                  <span class="text-sm text-forest">Commercial</span>
-                </label>
-                <label class="radio-option flex items-center gap-2.5 border border-cream-dark rounded-xl px-4 py-3 cursor-pointer">
-                  <input type="radio" name="property" value="hoa" class="accent-forest-light">
-                  <span class="text-sm text-forest">HOA / Community</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Lot Size -->
-            <div>
-              <label class="block text-sm font-semibold text-forest mb-2">Approximate Lot Size</label>
-              <select class="form-field w-full bg-cream border border-cream-dark rounded-xl px-4 py-3.5 text-forest text-sm">
-                <option value="" disabled selected>Select an option</option>
-                <option>Under ¼ acre (small yard)</option>
-                <option>¼ – ½ acre</option>
-                <option>½ – 1 acre</option>
-                <option>1–3 acres</option>
-                <option>3+ acres</option>
+              <label class="form-label">Service Needed</label>
+              <select name="service" class="form-input" style="cursor:pointer;">
+                <option value="Lawn Mowing & Edging">Lawn Mowing & Edging</option>
+                <option value="Hedge & Bush Trimming">Hedge & Bush Trimming</option>
+                <option value="Leaf Removal & Cleanup">Leaf Removal & Cleanup</option>
+                <option value="Fertilization & Weed Control">Fertilization & Weed Control</option>
+                <option value="Full Yard Cleanup">Full Yard Cleanup</option>
+                <option value="Multiple Services">Multiple Services</option>
+                <option value="Not Sure Yet">Not Sure Yet — Just Getting a Quote</option>
               </select>
             </div>
-
-            <!-- Message -->
             <div>
-              <label class="block text-sm font-semibold text-forest mb-2">Tell Us About Your Project</label>
-              <textarea rows="4" placeholder="Describe what you're looking for, any specific concerns, or anything that would help us prepare for your estimate..." class="form-field w-full bg-cream border border-cream-dark rounded-xl px-4 py-3.5 text-forest placeholder:text-forest/40 text-sm resize-none"></textarea>
+              <label class="form-label">Address / Area</label>
+              <input name="address" type="text" placeholder="City, State or full address" class="form-input">
             </div>
-
-            <!-- How did you hear -->
             <div>
-              <label class="block text-sm font-semibold text-forest mb-2">How Did You Hear About Us?</label>
-              <select class="form-field w-full bg-cream border border-cream-dark rounded-xl px-4 py-3.5 text-forest text-sm">
-                <option value="" disabled selected>Select one</option>
-                <option>Google Search</option>
-                <option>Google Maps</option>
-                <option>Facebook</option>
-                <option>Instagram</option>
-                <option>Neighbor / Friend Referral</option>
-                <option>Nextdoor</option>
-                <option>Yard Sign</option>
-                <option>Other</option>
-              </select>
+              <label class="form-label">Anything else we should know?</label>
+              <textarea name="message" rows="4" placeholder="Property size, current condition, anything specific you want done..." class="form-input resize-none"></textarea>
             </div>
-
-            <!-- Trust note -->
-            <p class="text-forest/50 text-xs leading-relaxed">By submitting this form, you agree to be contacted by Verdant Lawn Care regarding your estimate request. We never sell your information and you can opt out at any time.</p>
-
-            <!-- Submit -->
-            <button type="submit" class="gold-btn w-full text-forest font-bold text-base py-4 rounded-xl tracking-wide">
-              Send My Request →
+            <button type="submit" class="gold-btn w-full font-head font-bold text-green-dark text-base py-4 rounded-full">
+              Send My Quote Request →
             </button>
           </form>
 
-          <!-- Success message (hidden) -->
-          <div id="success-msg" class="hidden bg-forest-light/10 border border-forest-light rounded-2xl p-8 text-center mt-6">
-            <div class="w-16 h-16 rounded-full bg-forest flex items-center justify-center mx-auto mb-4">
-              <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <!-- SUCCESS STATE -->
+          <div id="form-success" class="hidden text-center py-12">
+            <div class="w-16 h-16 bg-green-base/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-green-base" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <h3 class="font-display font-semibold text-2xl text-forest mb-2">Request Received!</h3>
-            <p class="text-forest/65">Thank you! We'll reach out within one business day to schedule your free estimate.</p>
+            <h3 class="font-head font-extrabold text-xl text-green-dark mb-2">Request Sent!</h3>
+            <p class="text-green-dark/60 text-sm">We'll follow up within 24 hours with your free estimate.</p>
           </div>
         </div>
 
-        <!-- CONTACT INFO (right 2 cols) -->
-        <div class="lg:col-span-2 space-y-6 fade-up" style="transition-delay:0.15s">
-          <!-- Quick contact box -->
-          <div class="bg-forest rounded-2xl p-7 text-white">
-            <h3 class="font-display font-semibold text-2xl mb-5">Prefer to Talk?</h3>
-            <div class="space-y-5">
-              <a href="tel:1234567890" class="flex items-center gap-4 group">
-                <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold transition-colors duration-300">
-                  <svg class="w-5 h-5 text-gold group-hover:text-forest transition-colors" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-                </div>
-                <div>
-                  <div class="text-white/60 text-xs mb-0.5">Call or Text</div>
-                  <div class="text-white font-semibold">(123) 456-7890</div>
-                </div>
-              </a>
-              <a href="mailto:youremail@gmail.com" class="flex items-center gap-4 group">
-                <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold transition-colors duration-300">
-                  <svg class="w-5 h-5 text-gold group-hover:text-forest transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                </div>
-                <div>
-                  <div class="text-white/60 text-xs mb-0.5">Email Us</div>
-                  <div class="text-white font-semibold text-sm">youremail@gmail.com</div>
-                </div>
-              </a>
-              <div class="flex items-center gap-4">
-                <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                  <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                </div>
-                <div>
-                  <div class="text-white/60 text-xs mb-0.5">Office Hours</div>
-                  <div class="text-white font-semibold text-sm">Mon–Sat: 7am – 6pm</div>
-                </div>
+        <!-- CONTACT INFO -->
+        <div class="space-y-6">
+          <div class="bg-green-dark rounded-2xl p-7 text-white">
+            <h3 class="font-head font-bold text-lg mb-5">Prefer to Call?</h3>
+            <a href="tel:1234567890" class="flex items-center gap-4 mb-5 group">
+              <div class="w-10 h-10 rounded-full bg-gold/15 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
               </div>
-              <div class="flex items-start gap-4">
-                <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                </div>
-                <div>
-                  <div class="text-white/60 text-xs mb-0.5">Office Address</div>
-                  <div class="text-white text-sm">Your Street Address<br>Your City, ST 00000</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Service Areas -->
-          <div class="bg-cream-dark rounded-2xl p-7">
-            <h3 class="font-display font-semibold text-xl text-forest mb-4">Service Areas</h3>
-            <p class="text-forest/60 text-sm mb-4">We proudly serve the following communities and surrounding areas:</p>
-            <div class="grid grid-cols-2 gap-y-2">
-              <div class="flex items-center gap-2 text-sm text-forest/70"><span class="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0"></span>Northside</div>
-              <div class="flex items-center gap-2 text-sm text-forest/70"><span class="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0"></span>Southview</div>
-              <div class="flex items-center gap-2 text-sm text-forest/70"><span class="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0"></span>Eastdale</div>
-              <div class="flex items-center gap-2 text-sm text-forest/70"><span class="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0"></span>Westbrook</div>
-              <div class="flex items-center gap-2 text-sm text-forest/70"><span class="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0"></span>Riverside</div>
-              <div class="flex items-center gap-2 text-sm text-forest/70"><span class="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0"></span>Green Hills</div>
-              <div class="flex items-center gap-2 text-sm text-forest/70"><span class="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0"></span>Lakewood</div>
-              <div class="flex items-center gap-2 text-sm text-forest/70"><span class="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0"></span>Maple Grove</div>
-            </div>
-            <p class="text-forest/50 text-xs mt-4">Not sure if we serve your area? Give us a call and we'll let you know!</p>
-          </div>
-
-          <!-- Trust Badges -->
-          <div class="bg-white border border-cream-dark rounded-2xl p-6">
-            <h3 class="font-semibold text-forest text-sm mb-4">Why Clients Choose Us</h3>
-            <div class="space-y-3">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-gold/15 flex items-center justify-center flex-shrink-0">
-                  <svg class="w-4 h-4 text-gold-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                </div>
-                <span class="text-forest/70 text-sm">Free, no-obligation estimates</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-gold/15 flex items-center justify-center flex-shrink-0">
-                  <svg class="w-4 h-4 text-gold-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                </div>
-                <span class="text-forest/70 text-sm">Response within 1 business day</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-gold/15 flex items-center justify-center flex-shrink-0">
-                  <svg class="w-4 h-4 text-gold-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                </div>
-                <span class="text-forest/70 text-sm">Licensed, insured & background-checked</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-gold/15 flex items-center justify-center flex-shrink-0">
-                  <svg class="w-4 h-4 text-gold-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-                </div>
-                <span class="text-forest/70 text-sm">100% satisfaction guarantee</span>
-              </div>
-            </div>
-            <!-- Mini reviews -->
-            <div class="mt-5 pt-5 border-t border-cream-dark flex items-center justify-between">
               <div>
-                <div class="font-display font-bold text-2xl text-forest">5.0</div>
-                <div class="text-gold text-sm">★★★★★</div>
-                <div class="text-forest/50 text-xs">214 reviews</div>
+                <div class="text-gold font-head font-bold text-lg group-hover:text-gold/80 transition-colors">(123) 456-7890</div>
+                <div class="text-white/50 text-xs">Call or text — we respond fast</div>
               </div>
-              <div class="text-right">
-                <div class="text-forest/60 text-xs mb-1">Rated on</div>
-                <div class="text-forest font-semibold text-sm">Google</div>
-                <div class="text-forest/60 text-xs">Maps</div>
+            </a>
+            <a href="mailto:youremail@gmail.com" class="flex items-center gap-4 group">
+              <div class="w-10 h-10 rounded-full bg-gold/15 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
               </div>
+              <div>
+                <div class="text-white/85 font-medium text-sm group-hover:text-white transition-colors">youremail@gmail.com</div>
+                <div class="text-white/50 text-xs">We reply within 24 hours</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="bg-cream rounded-2xl p-7 border border-green-dark/10">
+            <h3 class="font-head font-bold text-green-dark text-base mb-4">What Happens Next?</h3>
+            <ol class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="w-7 h-7 rounded-full bg-gold flex items-center justify-center flex-shrink-0 font-head font-bold text-green-dark text-xs">1</span>
+                <div>
+                  <div class="font-semibold text-green-dark text-sm">We receive your request</div>
+                  <div class="text-green-dark/55 text-xs mt-0.5">Usually within minutes</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-7 h-7 rounded-full bg-gold flex items-center justify-center flex-shrink-0 font-head font-bold text-green-dark text-xs">2</span>
+                <div>
+                  <div class="font-semibold text-green-dark text-sm">We call or text you back</div>
+                  <div class="text-green-dark/55 text-xs mt-0.5">To confirm details and schedule</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-7 h-7 rounded-full bg-gold flex items-center justify-center flex-shrink-0 font-head font-bold text-green-dark text-xs">3</span>
+                <div>
+                  <div class="font-semibold text-green-dark text-sm">You get your free estimate</div>
+                  <div class="text-green-dark/55 text-xs mt-0.5">No obligation, no pressure</div>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="bg-green-dark/5 rounded-2xl p-6 border border-green-dark/10">
+            <div class="flex gap-4 items-center mb-4">
+              <div class="flex text-gold text-sm">★★★★★</div>
+              <span class="text-green-dark/60 text-xs font-semibold">5.0 · 200+ Reviews</span>
             </div>
+            <p class="text-green-dark/70 text-sm leading-relaxed italic">"They showed up when they said they would and my yard looked better than it ever has. I'll never use anyone else."</p>
+            <p class="text-green-dark/50 text-xs mt-2 font-semibold">— Sarah M., Verified Customer</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- MAP PLACEHOLDER -->
-  <section class="bg-cream-dark py-12 px-6 lg:px-12">
-    <div class="max-w-7xl mx-auto">
-      <div class="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(11,36,22,0.1)] h-56 bg-forest-light/20 flex items-center justify-center">
-        <div class="text-center">
-          <svg class="w-10 h-10 text-forest-light mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          <p class="text-forest/60 text-sm font-medium">Service Area Map</p>
-          <p class="text-forest/40 text-xs">Replace with Google Maps embed</p>
-        </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-forest text-white border-t border-white/10 py-10 px-6 lg:px-12">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-white/40 text-sm">© 2025 Verdant Lawn Care All rights reserved.</p>
-      <div class="flex gap-6">
-        <a href="index.html" class="text-white/40 text-sm hover:text-gold transition-colors">Home</a>
-        <a href="services.html" class="text-white/40 text-sm hover:text-gold transition-colors">Services</a>
-        <a href="contact.html" class="text-white/40 text-sm hover:text-gold transition-colors">Contact</a>
+  <footer class="bg-green-dark border-t border-white/10 text-white py-8 px-5 lg:px-10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="border-2 border-gold/50 rounded-lg px-4 py-2">
+        <span class="font-head font-bold text-gold text-sm tracking-widest">[ YOUR LOGO ]</span>
+      </div>
+      <p class="text-white/40 text-sm">© 2025 Your Lawn Care Company. All rights reserved.</p>
+      <div class="flex gap-6 text-white/50 text-sm">
+        <a href="index.html"    class="hover:text-white transition-colors">Home</a>
+        <a href="services.html" class="hover:text-white transition-colors">Services</a>
+        <a href="contact.html"  class="hover:text-white transition-colors">Contact</a>
       </div>
     </div>
   </footer>
 
   <script>
-    document.getElementById('mobile-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+    document.getElementById('mobile-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
 
-    function handleSubmit(e) {
+    function submitForm(e) {
       e.preventDefault();
-      document.getElementById('quote-form').classList.add('hidden');
-      document.getElementById('success-msg').classList.remove('hidden');
+      const f = e.target;
+      const name    = f.querySelector('[name=name]').value.trim();
+      const phone   = f.querySelector('[name=phone]').value.trim();
+      const email   = f.querySelector('[name=email]').value.trim();
+      const service = f.querySelector('[name=service]').value;
+      const address = f.querySelector('[name=address]').value.trim();
+      const message = f.querySelector('[name=message]').value.trim();
+      if (!name || !phone || !email) {
+        alert('Please fill in your name, phone, and email.');
+        return;
+      }
+      const subject = encodeURIComponent('New Quote Request — ' + service);
+      const body = encodeURIComponent(
+        'Hi,\n\nNew quote request from your website:\n\n' +
+        'Name: ' + name + '\n' +
+        'Phone: ' + phone + '\n' +
+        'Email: ' + email + '\n' +
+        'Service: ' + service + '\n' +
+        (address ? 'Address: ' + address + '\n' : '') +
+        (message ? '\nNotes: ' + message + '\n' : '') +
+        '\nPlease follow up as soon as possible.\n\n— Sent from your website'
+      );
+      window.location.href = 'mailto:youremail@gmail.com?subject=' + subject + '&body=' + body;
+      f.classList.add('hidden');
+      document.getElementById('form-success').classList.remove('hidden');
     }
 
-    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
   </script>
 </body>
 </html>

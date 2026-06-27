@@ -3,259 +3,206 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo — Our Work Gallery</title>
-  <meta name="description" content="Browse Verdant Lawn Care's portfolio of completed landscape projects. Lawn care, design installations, seasonal cleanups, and more.">
+  <title>Demo — Lawn Care Gallery</title>
+  <meta name="description" content="See our lawn mowing, hedge trimming, and yard cleanup work. Real photos from real jobs.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: { extend: {
-        colors: { forest: { DEFAULT: '#0B2416', mid: '#1B4332', light: '#2D6A4F', pale: '#40916C' }, gold: { DEFAULT: '#C9A84C', light: '#DDB96B' }, cream: { DEFAULT: '#F7F5EE', dark: '#E8E5D8' } },
-        fontFamily: { display: ['"Cormorant Garamond"', 'serif'] }
+        colors: {
+          green: { dark: '#0B3D1E', mid: '#145A32', base: '#1E8449', light: '#27AE60', pale: '#A9DFBF' },
+          gold:  { DEFAULT: '#F0A500', light: '#F5C842' },
+          cream: '#F9F9F4'
+        },
+        fontFamily: { head: ['Montserrat', 'sans-serif'], body: ['"Open Sans"', 'sans-serif'] }
       }}
     }
   </script>
   <style>
-    * { font-family: 'DM Sans', sans-serif; }
-    .font-display { font-family: 'Cormorant Garamond', serif; }
-    ::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-track { background: #0B2416; } ::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 3px; }
-    .nav-glass { background: rgba(11,36,22,0.97); backdrop-filter: blur(12px); box-shadow: 0 2px 30px rgba(0,0,0,0.4); }
-    .gold-btn { background: linear-gradient(135deg,#C9A84C 0%,#DDB96B 50%,#C9A84C 100%); background-size: 200% 200%; transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease; }
-    .gold-btn:hover { background-position: right center; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.45); }
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    * { font-family: 'Open Sans', sans-serif; }
+    h1, h2, h3, h4, .font-head { font-family: 'Montserrat', sans-serif; }
+    ::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-track { background: #0B3D1E; } ::-webkit-scrollbar-thumb { background: #F0A500; border-radius: 3px; }
+    .nav-solid { background: rgba(11,61,30,0.97); backdrop-filter: blur(10px); }
+    .gold-btn { background: linear-gradient(135deg,#F0A500,#F5C842,#F0A500); background-size: 200%; transition: background-position 0.4s, transform 0.2s, box-shadow 0.3s; }
+    .gold-btn:hover { background-position: right; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(240,165,0,0.4); }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .fade-up.in { opacity: 1; transform: translateY(0); }
-    .gallery-item { overflow: hidden; position: relative; cursor: pointer; }
-    .gallery-item img { transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .gallery-item { overflow: hidden; border-radius: 12px; }
+    .gallery-item img { transition: transform 0.5s ease; width: 100%; height: 100%; object-fit: cover; }
     .gallery-item:hover img { transform: scale(1.07); }
-    .gallery-item .overlay { opacity: 0; transition: opacity 0.3s ease; background: linear-gradient(to top, rgba(11,36,22,0.9) 0%, rgba(11,36,22,0.3) 60%, transparent 100%); }
-    .gallery-item:hover .overlay { opacity: 1; }
-    .filter-btn { transition: all 0.25s ease; }
-    .filter-btn.active, .filter-btn:hover { background: #1B4332; color: white; }
-    .filter-btn.active { border-color: #1B4332; }
-    .gallery-item.hidden-item { display: none; }
   </style>
 </head>
-<body class="bg-cream text-forest overflow-x-hidden">
+<body class="bg-cream text-green-dark overflow-x-hidden">
 
   <!-- NAV -->
-  <nav class="nav-glass fixed top-0 left-0 right-0 z-50 px-6 lg:px-12">
-    <div class="max-w-7xl mx-auto flex items-center justify-between h-20">
-      <a href="index.html" class="flex items-center"><div class="border-2 border-gold/60 rounded-lg px-4 py-2 bg-white/5"><span class="font-bold text-gold text-sm tracking-widest uppercase" style="font-family:Montserrat,sans-serif">[ YOUR LOGO ]</span></div></a>
-      <div class="hidden lg:flex items-center gap-8">
-        <a href="index.html" class="text-white/80 text-sm font-medium hover:text-gold transition-colors">Home</a>
-        <a href="services.html" class="text-white/80 text-sm font-medium hover:text-gold transition-colors">Services</a>
-        <a href="about.html" class="text-white/80 text-sm font-medium hover:text-gold transition-colors">About</a>
-        <a href="gallery.html" class="text-white text-sm font-medium border-b border-gold pb-0.5">Gallery</a>
-        <a href="contact.html" class="text-white/80 text-sm font-medium hover:text-gold transition-colors">Contact</a>
+  <nav class="nav-solid fixed top-0 left-0 right-0 z-50 px-5 lg:px-10">
+    <div class="max-w-6xl mx-auto flex items-center justify-between h-[68px]">
+      <a href="index.html">
+        <div class="border-2 border-gold/60 rounded-lg px-4 py-2">
+          <span class="font-head font-bold text-gold text-sm tracking-widest uppercase">[ YOUR LOGO ]</span>
+        </div>
+      </a>
+      <div class="hidden lg:flex items-center gap-7">
+        <a href="index.html"    class="text-white/75 text-sm font-head font-semibold hover:text-white transition-colors">Home</a>
+        <a href="services.html" class="text-white/75 text-sm font-head font-semibold hover:text-white transition-colors">Services</a>
+        <a href="about.html"    class="text-white/75 text-sm font-head font-semibold hover:text-white transition-colors">About</a>
+        <a href="gallery.html"  class="text-white   text-sm font-head font-semibold border-b-2 border-gold pb-0.5">Gallery</a>
+        <a href="contact.html"  class="text-white/75 text-sm font-head font-semibold hover:text-white transition-colors">Contact</a>
       </div>
       <div class="hidden lg:flex items-center gap-4">
-        <a href="tel:1234567890" class="text-white/70 text-sm hover:text-gold transition-colors">(123) 456-7890</a>
-        <a href="contact.html" class="gold-btn text-forest font-semibold text-sm px-6 py-3 rounded-full">Get Free Quote</a>
+        <a href="tel:1234567890" class="flex items-center gap-2 text-white/80 text-sm font-semibold hover:text-gold transition-colors">
+          <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+          (123) 456-7890
+        </a>
+        <a href="contact.html" class="gold-btn font-head font-bold text-green-dark text-sm px-6 py-2.5 rounded-full">Free Quote</a>
       </div>
       <button id="mobile-toggle" class="lg:hidden text-white p-2">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden lg:hidden bg-forest/98 pb-6 px-6 border-t border-white/10">
-      <div class="flex flex-col gap-4 pt-6">
-        <a href="index.html" class="text-white font-medium text-lg hover:text-gold">Home</a>
-        <a href="services.html" class="text-white/80 font-medium text-lg hover:text-gold">Services</a>
-        <a href="about.html" class="text-white/80 font-medium text-lg hover:text-gold">About</a>
-        <a href="gallery.html" class="text-gold font-medium text-lg">Gallery</a>
-        <a href="contact.html" class="text-white/80 font-medium text-lg hover:text-gold">Contact</a>
-        <div class="pt-2 border-t border-white/10">
-          <a href="contact.html" class="gold-btn inline-block text-forest font-semibold text-sm px-8 py-3 rounded-full">Get Free Quote</a>
+    <div id="mobile-menu" class="hidden lg:hidden bg-green-dark border-t border-white/10 pb-5 px-5">
+      <div class="flex flex-col gap-4 pt-5">
+        <a href="index.html"    class="text-white/80 font-head font-semibold text-base hover:text-gold">Home</a>
+        <a href="services.html" class="text-white/80 font-head font-semibold text-base hover:text-gold">Services</a>
+        <a href="about.html"    class="text-white/80 font-head font-semibold text-base hover:text-gold">About</a>
+        <a href="gallery.html"  class="text-gold font-head font-semibold text-base">Gallery</a>
+        <a href="contact.html"  class="text-white/80 font-head font-semibold text-base hover:text-gold">Contact</a>
+        <div class="border-t border-white/10 pt-4">
+          <a href="contact.html" class="gold-btn inline-block font-head font-bold text-green-dark text-sm px-7 py-3 rounded-full">Get Free Quote</a>
         </div>
       </div>
     </div>
   </nav>
 
   <!-- PAGE HERO -->
-  <section class="relative pt-36 pb-24 bg-forest overflow-hidden">
-    <div class="absolute inset-0 opacity-15" style="background-image:url('images/mowing-crew-1.png'); background-size:cover; background-position:center;"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-forest via-forest/90 to-forest/60"></div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-      <div class="flex items-center gap-2 text-gold/80 text-sm mb-4">
-        <a href="index.html" class="hover:text-gold">Home</a>
-        <span>/</span><span class="text-gold">Gallery</span>
+  <section class="bg-green-dark pt-36 pb-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20" style="background-image:url('images/crew-mowing-trimming.png'); background-size:cover; background-position:center;"></div>
+    <div class="absolute inset-0" style="background:linear-gradient(to right, rgba(11,61,30,0.95), rgba(11,61,30,0.7));"></div>
+    <div class="max-w-6xl mx-auto px-5 lg:px-10 relative z-10">
+      <div class="flex items-center gap-2 text-gold/70 text-sm mb-4 font-head font-semibold">
+        <a href="index.html" class="hover:text-gold transition-colors">Home</a><span>/</span><span class="text-gold">Gallery</span>
       </div>
-      <h1 class="font-display font-semibold text-5xl lg:text-6xl text-white leading-tight mb-5">Our Portfolio</h1>
-      <p class="text-white/65 text-lg leading-relaxed max-w-xl">Every project tells a story. Browse our recent work across lawn care, landscape design, and outdoor transformations.</p>
+      <h1 class="font-head font-extrabold text-5xl lg:text-6xl text-white leading-tight mb-4">Our Work</h1>
+      <p class="text-white/65 text-lg max-w-xl leading-relaxed">Real photos from real jobs. This is what a well-maintained lawn looks like — and what your property could look like too.</p>
     </div>
   </section>
 
-  <!-- FILTER + GALLERY -->
-  <section class="py-16 lg:py-24">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12">
-      <!-- Filter Buttons -->
-      <div class="flex flex-wrap gap-3 mb-12 fade-up">
-        <button class="filter-btn active border border-forest text-forest text-sm font-medium px-5 py-2 rounded-full" data-filter="all">All Projects</button>
-        <button class="filter-btn border border-forest/30 text-forest/70 text-sm font-medium px-5 py-2 rounded-full" data-filter="lawn">Lawn Care</button>
-        <button class="filter-btn border border-forest/30 text-forest/70 text-sm font-medium px-5 py-2 rounded-full" data-filter="design">Landscape Design</button>
-        <button class="filter-btn border border-forest/30 text-forest/70 text-sm font-medium px-5 py-2 rounded-full" data-filter="cleanup">Cleanup</button>
-        <button class="filter-btn border border-forest/30 text-forest/70 text-sm font-medium px-5 py-2 rounded-full" data-filter="commercial">Commercial</button>
-      </div>
-
-      <!-- Masonry-style Grid -->
-      <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8" id="gallery-grid">
-
-        <div class="gallery-item rounded-2xl overflow-hidden fade-up row-span-2 h-72 lg:h-auto" data-category="design" style="min-height:300px;">
-          <img src="images/mowing-striped-lawn.png" alt="Full landscape redesign — Residential" class="w-full h-full object-cover">
-          <div class="overlay absolute inset-0 flex flex-col justify-end p-5">
-            <span class="text-gold text-xs font-semibold tracking-widest uppercase mb-1">Landscape Design</span>
-            <span class="text-white font-display font-semibold text-lg">Full Property Redesign</span>
-          </div>
+  <!-- GALLERY GRID -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-5 lg:px-10 fade-up">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-5">
+        <!-- Row 1 -->
+        <div class="gallery-item shadow-[0_4px_20px_rgba(11,61,30,0.1)] h-52 lg:h-64">
+          <img src="images/mowing-striped-lawn.png" alt="Professional striped lawn after mowing">
         </div>
-
-        <div class="gallery-item rounded-2xl overflow-hidden fade-up h-44 lg:h-56" data-category="lawn" style="transition-delay:0.05s">
-          <img src="images/hedge-trimming.png" alt="Lawn maintenance" class="w-full h-full object-cover">
-          <div class="overlay absolute inset-0 flex flex-col justify-end p-5">
-            <span class="text-gold text-xs font-semibold tracking-widest uppercase mb-1">Lawn Care</span>
-            <span class="text-white font-display font-semibold text-lg">Weekly Maintenance</span>
-          </div>
+        <div class="gallery-item shadow-[0_4px_20px_rgba(11,61,30,0.1)] h-52 lg:h-64">
+          <img src="images/crew-mowing-trimming.png" alt="Two-person lawn crew mowing and trimming">
         </div>
-
-        <div class="gallery-item rounded-2xl overflow-hidden fade-up h-44 lg:h-56" data-category="design" style="transition-delay:0.1s">
-          <img src="images/crew-mowing-trimming.png" alt="Garden design" class="w-full h-full object-cover">
-          <div class="overlay absolute inset-0 flex flex-col justify-end p-5">
-            <span class="text-gold text-xs font-semibold tracking-widest uppercase mb-1">Design</span>
-            <span class="text-white font-display font-semibold text-lg">Garden Installation</span>
-          </div>
+        <div class="gallery-item shadow-[0_4px_20px_rgba(11,61,30,0.1)] h-52 lg:h-64">
+          <img src="images/hedge-trimming.png" alt="Worker trimming and shaping hedges">
         </div>
-
-        <div class="gallery-item rounded-2xl overflow-hidden fade-up h-44 lg:h-56" data-category="lawn" style="transition-delay:0.15s">
-          <img src="images/fertilizer-residential.png" alt="Lush green lawn" class="w-full h-full object-cover">
-          <div class="overlay absolute inset-0 flex flex-col justify-end p-5">
-            <span class="text-gold text-xs font-semibold tracking-widest uppercase mb-1">Lawn Care</span>
-            <span class="text-white font-display font-semibold text-lg">Lush Lawn Restoration</span>
-          </div>
+        <!-- Row 2 -->
+        <div class="gallery-item shadow-[0_4px_20px_rgba(11,61,30,0.1)] h-52 lg:h-64">
+          <img src="images/mowing-driveway.png" alt="Commercial mowing along long driveway">
         </div>
-
-        <div class="gallery-item rounded-2xl overflow-hidden fade-up h-44 lg:h-56" data-category="commercial" style="transition-delay:0.2s">
-          <img src="images/commercial-mowing.png" alt="Commercial property" class="w-full h-full object-cover">
-          <div class="overlay absolute inset-0 flex flex-col justify-end p-5">
-            <span class="text-gold text-xs font-semibold tracking-widest uppercase mb-1">Commercial</span>
-            <span class="text-white font-display font-semibold text-lg">Office Park Grounds</span>
-          </div>
+        <div class="gallery-item shadow-[0_4px_20px_rgba(11,61,30,0.1)] h-52 lg:h-64">
+          <img src="images/fertilizer-residential.png" alt="Fertilizer application on suburban lawn">
         </div>
-
-        <div class="gallery-item rounded-2xl overflow-hidden fade-up h-44 lg:h-56" data-category="design" style="transition-delay:0.05s">
-          <img src="images/trimmer-action.png" alt="Beautiful outdoor space" class="w-full h-full object-cover">
-          <div class="overlay absolute inset-0 flex flex-col justify-end p-5">
-            <span class="text-gold text-xs font-semibold tracking-widest uppercase mb-1">Landscape Design</span>
-            <span class="text-white font-display font-semibold text-lg">Backyard Transformation</span>
-          </div>
+        <div class="gallery-item shadow-[0_4px_20px_rgba(11,61,30,0.1)] h-52 lg:h-64">
+          <img src="images/commercial-mowing.png" alt="Commercial property mowing along stone building">
         </div>
-
-        <div class="gallery-item rounded-2xl overflow-hidden fade-up h-44 lg:h-56" data-category="design" style="transition-delay:0.1s">
-          <img src="images/clean-garden-mower.png" alt="Trees and shrubs" class="w-full h-full object-cover">
-          <div class="overlay absolute inset-0 flex flex-col justify-end p-5">
-            <span class="text-gold text-xs font-semibold tracking-widest uppercase mb-1">Tree Trimming</span>
-            <span class="text-white font-display font-semibold text-lg">Mature Tree Shaping</span>
-          </div>
+        <!-- Row 3 -->
+        <div class="gallery-item shadow-[0_4px_20px_rgba(11,61,30,0.1)] h-52 lg:h-64">
+          <img src="images/trimmer-action.png" alt="Close-up weed trimmer action shot">
         </div>
-
-        <div class="gallery-item rounded-2xl overflow-hidden fade-up h-44 lg:h-56" data-category="cleanup" style="transition-delay:0.15s">
-          <img src="images/mowing-driveway.png" alt="Seasonal cleanup" class="w-full h-full object-cover">
-          <div class="overlay absolute inset-0 flex flex-col justify-end p-5">
-            <span class="text-gold text-xs font-semibold tracking-widest uppercase mb-1">Seasonal Cleanup</span>
-            <span class="text-white font-display font-semibold text-lg">Fall Leaf Removal</span>
-          </div>
+        <div class="gallery-item shadow-[0_4px_20px_rgba(11,61,30,0.1)] h-52 lg:h-64">
+          <img src="images/aerating-lawn.png" alt="Lawn aeration work">
         </div>
-
-        <div class="gallery-item rounded-2xl overflow-hidden fade-up h-44 lg:h-56" data-category="commercial" style="transition-delay:0.2s">
-          <img src="images/team-on-lawn.png" alt="Commercial outdoor" class="w-full h-full object-cover">
-          <div class="overlay absolute inset-0 flex flex-col justify-end p-5">
-            <span class="text-gold text-xs font-semibold tracking-widest uppercase mb-1">Commercial</span>
-            <span class="text-white font-display font-semibold text-lg">HOA Common Areas</span>
-          </div>
+        <div class="gallery-item shadow-[0_4px_20px_rgba(11,61,30,0.1)] h-52 lg:h-64">
+          <img src="images/team-on-lawn.png" alt="Lawn care team assessing and mowing">
         </div>
-
-        <div class="gallery-item rounded-2xl overflow-hidden fade-up h-44 lg:h-56" data-category="design" style="transition-delay:0.1s">
-          <img src="images/spraying-lawn.png" alt="Landscaping team" class="w-full h-full object-cover">
-          <div class="overlay absolute inset-0 flex flex-col justify-end p-5">
-            <span class="text-gold text-xs font-semibold tracking-widest uppercase mb-1">Installation</span>
-            <span class="text-white font-display font-semibold text-lg">New Planting Beds</span>
-          </div>
+        <!-- Row 4 -->
+        <div class="gallery-item shadow-[0_4px_20px_rgba(11,61,30,0.1)] h-52 lg:h-64">
+          <img src="images/clean-garden-mower.png" alt="Clean garden with push mower and flower beds">
         </div>
-
-        <div class="gallery-item rounded-2xl overflow-hidden fade-up h-44 lg:h-56" data-category="cleanup" style="transition-delay:0.15s">
-          <img src="images/fertilizer-spreader.png" alt="Hedge trimming" class="w-full h-full object-cover">
-          <div class="overlay absolute inset-0 flex flex-col justify-end p-5">
-            <span class="text-gold text-xs font-semibold tracking-widest uppercase mb-1">Trimming</span>
-            <span class="text-white font-display font-semibold text-lg">Hedge Sculpting</span>
-          </div>
+        <div class="gallery-item shadow-[0_4px_20px_rgba(11,61,30,0.1)] h-52 lg:h-64">
+          <img src="images/striped-lawn-mower.png" alt="Beautifully striped residential lawn">
         </div>
-
-        <div class="gallery-item rounded-2xl overflow-hidden fade-up h-44 lg:h-56" data-category="lawn" style="transition-delay:0.2s">
-          <img src="images/striped-lawn-mower.png" alt="Mulched beds" class="w-full h-full object-cover">
-          <div class="overlay absolute inset-0 flex flex-col justify-end p-5">
-            <span class="text-gold text-xs font-semibold tracking-widest uppercase mb-1">Bed Care</span>
-            <span class="text-white font-display font-semibold text-lg">Fresh Mulch Install</span>
-          </div>
+        <div class="gallery-item shadow-[0_4px_20px_rgba(11,61,30,0.1)] h-52 lg:h-64">
+          <img src="images/mulch-garden-worker.png" alt="Worker doing garden bed and mulch work">
+        </div>
+        <!-- Row 5: wide photos spanning full width -->
+        <div class="gallery-item shadow-[0_4px_20px_rgba(11,61,30,0.1)] h-52 lg:h-64 col-span-2">
+          <img src="images/spraying-lawn.png" alt="Lawn treatment spray application" style="object-position: center 40%;">
+        </div>
+        <div class="gallery-item shadow-[0_4px_20px_rgba(11,61,30,0.1)] h-52 lg:h-64">
+          <img src="images/fertilizer-spreader.png" alt="Fertilizer spreader on commercial property">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIAL STRIP -->
-  <section class="bg-forest py-16 px-6 lg:px-12">
-    <div class="max-w-3xl mx-auto text-center fade-up">
-      <div class="text-gold text-3xl mb-4">❝</div>
-      <blockquote class="font-display font-semibold text-2xl lg:text-3xl text-white leading-tight mb-6 italic">
-        "Verdant turned our neglected backyard into the most talked-about spot in the neighborhood. Worth every dollar."
-      </blockquote>
-      <div class="text-white/60 text-sm">— Robert & Lisa H., Landscape Design Clients</div>
+  <!-- TRUST STRIP -->
+  <section class="bg-cream py-10 border-t border-green-dark/10">
+    <div class="max-w-4xl mx-auto px-5 lg:px-10">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 fade-up">
+        <div class="text-center">
+          <div class="font-head font-extrabold text-3xl text-green-dark mb-1">200+</div>
+          <div class="text-green-dark/60 text-sm font-medium">Happy Customers</div>
+        </div>
+        <div class="text-center">
+          <div class="font-head font-extrabold text-3xl text-green-dark mb-1">5★</div>
+          <div class="text-green-dark/60 text-sm font-medium">Avg. Rating</div>
+        </div>
+        <div class="text-center">
+          <div class="font-head font-extrabold text-3xl text-green-dark mb-1">8+</div>
+          <div class="text-green-dark/60 text-sm font-medium">Years in Business</div>
+        </div>
+        <div class="text-center">
+          <div class="font-head font-extrabold text-3xl text-green-dark mb-1">100%</div>
+          <div class="text-green-dark/60 text-sm font-medium">Satisfaction Guarantee</div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="bg-cream py-20 text-center px-6">
-    <div class="max-w-2xl mx-auto fade-up">
-      <h2 class="font-display font-semibold text-4xl lg:text-5xl text-forest mb-5">Ready for Your Project?</h2>
-      <p class="text-forest/65 text-lg mb-8">Get a free, no-obligation estimate and see what Verdant can do for your property.</p>
-      <a href="contact.html" class="gold-btn inline-block text-forest font-bold px-10 py-4 rounded-full text-base tracking-wide">Get My Free Estimate →</a>
+  <section class="py-20 bg-green-dark relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image:url('images/mowing-striped-lawn.png'); background-size:cover; background-position:center;"></div>
+    <div class="relative z-10 max-w-2xl mx-auto px-5 text-center fade-up">
+      <p class="font-head font-bold text-gold text-xs tracking-[.2em] uppercase mb-3">Like What You See?</p>
+      <h2 class="font-head font-extrabold text-3xl lg:text-4xl text-white mb-4">Let's Do This for Your Yard</h2>
+      <p class="text-white/60 leading-relaxed mb-8">Get a free estimate. No pressure, no hassle — just a straight quote from a crew that does great work.</p>
+      <a href="contact.html" class="gold-btn inline-block font-head font-bold text-green-dark text-base px-10 py-4 rounded-full">Get My Free Estimate →</a>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-forest text-white border-t border-white/10 py-10 px-6 lg:px-12">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-white/40 text-sm">© 2025 Verdant Lawn Care All rights reserved.</p>
-      <div class="flex gap-6">
-        <a href="index.html" class="text-white/40 text-sm hover:text-gold transition-colors">Home</a>
-        <a href="services.html" class="text-white/40 text-sm hover:text-gold transition-colors">Services</a>
-        <a href="contact.html" class="text-white/40 text-sm hover:text-gold transition-colors">Contact</a>
+  <footer class="bg-green-dark border-t border-white/10 text-white py-8 px-5 lg:px-10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="border-2 border-gold/50 rounded-lg px-4 py-2">
+        <span class="font-head font-bold text-gold text-sm tracking-widest">[ YOUR LOGO ]</span>
+      </div>
+      <p class="text-white/40 text-sm">© 2025 Your Lawn Care Company. All rights reserved.</p>
+      <div class="flex gap-6 text-white/50 text-sm">
+        <a href="index.html"   class="hover:text-white transition-colors">Home</a>
+        <a href="gallery.html" class="hover:text-white transition-colors">Gallery</a>
+        <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
       </div>
     </div>
   </footer>
 
   <script>
-    document.getElementById('mobile-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
-
-    // Gallery filter
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const items = document.querySelectorAll('.gallery-item');
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        items.forEach(item => {
-          if (filter === 'all' || item.dataset.category === filter) {
-            item.classList.remove('hidden-item');
-          } else {
-            item.classList.add('hidden-item');
-          }
-        });
-      });
+    document.getElementById('mobile-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
     });
-
-    // Fade-up on scroll
-    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
   </script>
 </body>
 </html>
