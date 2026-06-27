@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Verdant Landscape Co.</title>
+  <meta name="description" content="Learn the story behind Verdant Landscape Co. — 15+ years of premium landscaping, a team of certified professionals, and an unwavering commitment to quality.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { forest: { DEFAULT: '#0B2416', mid: '#1B4332', light: '#2D6A4F', pale: '#40916C' }, gold: { DEFAULT: '#C9A84C', light: '#DDB96B', dark: '#A8873A' }, cream: { DEFAULT: '#F7F5EE', dark: '#E8E5D8' } },
+        fontFamily: { display: ['"Cormorant Garamond"', 'serif'], body: ['"DM Sans"', 'sans-serif'] }
+      }}
+    }
+  </script>
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+    ::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-track { background: #0B2416; } ::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 3px; }
+    .nav-glass { background: rgba(11,36,22,0.97); backdrop-filter: blur(12px); box-shadow: 0 2px 30px rgba(0,0,0,0.4); }
+    .gold-btn { background: linear-gradient(135deg,#C9A84C 0%,#DDB96B 50%,#C9A84C 100%); background-size: 200% 200%; transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease; }
+    .gold-btn:hover { background-position: right center; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.45); }
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .fade-up.in { opacity: 1; transform: translateY(0); }
+    .team-card:hover img { transform: scale(1.04); }
+    .team-card img { transition: transform 0.4s ease; }
+    .value-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(11,36,22,0.14); }
+    .value-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  </style>
+</head>
+<body class="bg-cream text-forest overflow-x-hidden">
+
+  <!-- NAV -->
+  <nav class="nav-glass fixed top-0 left-0 right-0 z-50 px-6 lg:px-12">
+    <div class="max-w-7xl mx-auto flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10">
+          <svg viewBox="0 0 40 40" fill="none" class="w-full h-full">
+            <circle cx="20" cy="20" r="19" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/>
+            <path d="M20 8 C20 8 30 13 30 22 C30 29 25 33 20 33 C15 33 10 29 10 22 C10 13 20 8 20 8Z" fill="#2D6A4F"/>
+            <path d="M20 8 C20 8 20 22 20 33" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M20 18 C20 18 14.5 16 12 11" stroke="#C9A84C" stroke-width="1" stroke-linecap="round" opacity="0.8"/>
+            <path d="M20 23 C20 23 25.5 21 28 16" stroke="#C9A84C" stroke-width="1" stroke-linecap="round" opacity="0.8"/>
+          </svg>
+        </div>
+        <div>
+          <div class="text-white font-display font-semibold text-lg leading-none group-hover:text-gold transition-colors">VERDANT</div>
+          <div class="text-gold text-[10px] tracking-[0.25em] leading-none mt-0.5">LANDSCAPE CO.</div>
+        </div>
+      </a>
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="index.html" class="text-white/80 text-sm font-medium hover:text-gold transition-colors">Home</a>
+        <a href="services.html" class="text-white/80 text-sm font-medium hover:text-gold transition-colors">Services</a>
+        <a href="about.html" class="text-white text-sm font-medium border-b border-gold pb-0.5">About</a>
+        <a href="gallery.html" class="text-white/80 text-sm font-medium hover:text-gold transition-colors">Gallery</a>
+        <a href="contact.html" class="text-white/80 text-sm font-medium hover:text-gold transition-colors">Contact</a>
+      </div>
+      <div class="hidden lg:flex items-center gap-4">
+        <a href="tel:5552807400" class="text-white/70 text-sm hover:text-gold transition-colors">(555) 280-7400</a>
+        <a href="contact.html" class="gold-btn text-forest font-semibold text-sm px-6 py-3 rounded-full">Get Free Quote</a>
+      </div>
+      <button id="mobile-toggle" class="lg:hidden text-white p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden bg-forest/98 pb-6 px-6 border-t border-white/10">
+      <div class="flex flex-col gap-4 pt-6">
+        <a href="index.html" class="text-white font-medium text-lg hover:text-gold">Home</a>
+        <a href="services.html" class="text-white/80 font-medium text-lg hover:text-gold">Services</a>
+        <a href="about.html" class="text-gold font-medium text-lg">About</a>
+        <a href="gallery.html" class="text-white/80 font-medium text-lg hover:text-gold">Gallery</a>
+        <a href="contact.html" class="text-white/80 font-medium text-lg hover:text-gold">Contact</a>
+        <div class="pt-2 border-t border-white/10">
+          <a href="contact.html" class="gold-btn inline-block text-forest font-semibold text-sm px-8 py-3 rounded-full">Get Free Quote</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="relative pt-36 pb-24 bg-forest overflow-hidden">
+    <div class="absolute inset-0 opacity-15" style="background-image:url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1920&q=80'); background-size:cover; background-position:center;"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-forest via-forest/90 to-forest/60"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+      <div class="flex items-center gap-2 text-gold/80 text-sm mb-4">
+        <a href="index.html" class="hover:text-gold">Home</a>
+        <span>/</span><span class="text-gold">About</span>
+      </div>
+      <h1 class="font-display font-semibold text-5xl lg:text-6xl text-white leading-tight mb-5">Our Story</h1>
+      <p class="text-white/65 text-lg leading-relaxed max-w-xl">15 years of craft, community, and an unwavering commitment to outdoor spaces that feel like home.</p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-up">
+          <div class="text-forest-light text-sm font-semibold tracking-[0.2em] uppercase mb-4">How It Started</div>
+          <h2 class="font-display font-semibold text-4xl lg:text-5xl text-forest leading-tight mb-6">Built on a<br><em>Love for the Land</em></h2>
+          <p class="text-forest/65 leading-relaxed mb-5 text-lg">Verdant Landscape Co. was founded in 2009 by a team of landscape professionals who believed that every property — no matter the size — deserved to look exceptional. What started as a two-truck operation has grown into one of the region's most trusted landscaping companies.</p>
+          <p class="text-forest/65 leading-relaxed mb-8">We've maintained that founder mentality: showing up on time, communicating clearly, and doing work we're proud to put our name on. Today we serve hundreds of residential and commercial clients across the area, backed by a crew of dedicated landscape professionals who genuinely love what they do.</p>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="bg-cream rounded-2xl p-4 text-center">
+              <div class="font-display font-bold text-3xl text-gold mb-1">2009</div>
+              <div class="text-forest/60 text-xs">Founded</div>
+            </div>
+            <div class="bg-cream rounded-2xl p-4 text-center">
+              <div class="font-display font-bold text-3xl text-gold mb-1">20+</div>
+              <div class="text-forest/60 text-xs">Crew Members</div>
+            </div>
+            <div class="bg-cream rounded-2xl p-4 text-center">
+              <div class="font-display font-bold text-3xl text-gold mb-1">500+</div>
+              <div class="text-forest/60 text-xs">Properties</div>
+            </div>
+          </div>
+        </div>
+        <div class="fade-up relative" style="transition-delay:0.15s">
+          <div class="rounded-2xl overflow-hidden shadow-[0_24px_60px_rgba(11,36,22,0.18)]">
+            <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=85" alt="The Verdant team at work" class="w-full h-[480px] object-cover">
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-forest rounded-2xl p-5 shadow-[0_12px_40px_rgba(0,0,0,0.3)]">
+            <div class="text-gold font-display font-bold text-3xl mb-1">15+</div>
+            <div class="text-white/70 text-xs tracking-wide">Years of Excellence</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="py-24 lg:py-28 bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-14 fade-up">
+        <div class="text-forest-light text-sm font-semibold tracking-[0.2em] uppercase mb-3">What Drives Us</div>
+        <h2 class="font-display font-semibold text-4xl lg:text-5xl text-forest">Our Core Values</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="value-card bg-white rounded-2xl p-7 shadow-[0_4px_24px_rgba(11,36,22,0.07)] fade-up">
+          <div class="w-12 h-12 rounded-xl bg-forest mb-5 flex items-center justify-center">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-xl text-forest mb-3">Quality First</h3>
+          <p class="text-forest/60 text-sm leading-relaxed">We never cut corners. Every blade of grass, every mulched bed, every trimmed hedge reflects our standard of excellence.</p>
+        </div>
+        <div class="value-card bg-white rounded-2xl p-7 shadow-[0_4px_24px_rgba(11,36,22,0.07)] fade-up" style="transition-delay:0.1s">
+          <div class="w-12 h-12 rounded-xl bg-forest mb-5 flex items-center justify-center">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-xl text-forest mb-3">Reliability</h3>
+          <p class="text-forest/60 text-sm leading-relaxed">We show up when we say we will. No excuses, no missed appointments. Your time matters, and we respect it.</p>
+        </div>
+        <div class="value-card bg-white rounded-2xl p-7 shadow-[0_4px_24px_rgba(11,36,22,0.07)] fade-up" style="transition-delay:0.2s">
+          <div class="w-12 h-12 rounded-xl bg-forest mb-5 flex items-center justify-center">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-xl text-forest mb-3">Sustainability</h3>
+          <p class="text-forest/60 text-sm leading-relaxed">We use eco-conscious methods, organic products where possible, and water-efficient practices that protect your family and the environment.</p>
+        </div>
+        <div class="value-card bg-white rounded-2xl p-7 shadow-[0_4px_24px_rgba(11,36,22,0.07)] fade-up" style="transition-delay:0.3s">
+          <div class="w-12 h-12 rounded-xl bg-forest mb-5 flex items-center justify-center">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-xl text-forest mb-3">Community</h3>
+          <p class="text-forest/60 text-sm leading-relaxed">We're your neighbors. We invest in the communities we serve, support local suppliers, and take pride in the neighborhoods we help beautify.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" class="py-24 lg:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-14 fade-up">
+        <div class="text-forest-light text-sm font-semibold tracking-[0.2em] uppercase mb-3">The People Behind the Work</div>
+        <h2 class="font-display font-semibold text-4xl lg:text-5xl text-forest">Meet Our Team</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="team-card text-center fade-up">
+          <div class="rounded-2xl overflow-hidden h-64 mb-5 shadow-[0_8px_30px_rgba(11,36,22,0.12)]">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80&facepad=3&fit=facearea" alt="Marcus W." class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-display font-semibold text-xl text-forest mb-1">Marcus W.</h3>
+          <div class="text-gold text-sm font-medium mb-2">Founder & Lead Designer</div>
+          <p class="text-forest/55 text-sm">15 years in landscape architecture. Certified by the NALP and passionate about sustainable design.</p>
+        </div>
+        <div class="team-card text-center fade-up" style="transition-delay:0.1s">
+          <div class="rounded-2xl overflow-hidden h-64 mb-5 shadow-[0_8px_30px_rgba(11,36,22,0.12)]">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80&facepad=3&fit=facearea" alt="Jennifer T." class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-display font-semibold text-xl text-forest mb-1">Jennifer T.</h3>
+          <div class="text-gold text-sm font-medium mb-2">Operations Manager</div>
+          <p class="text-forest/55 text-sm">Ensures every job runs like clockwork. Your point of contact from quote to completion.</p>
+        </div>
+        <div class="team-card text-center fade-up" style="transition-delay:0.2s">
+          <div class="rounded-2xl overflow-hidden h-64 mb-5 shadow-[0_8px_30px_rgba(11,36,22,0.12)]">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80&facepad=3&fit=facearea" alt="David R." class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-display font-semibold text-xl text-forest mb-1">David R.</h3>
+          <div class="text-gold text-sm font-medium mb-2">Senior Horticulturist</div>
+          <p class="text-forest/55 text-sm">ISA-certified arborist with deep expertise in native plantings and soil health programs.</p>
+        </div>
+        <div class="team-card text-center fade-up" style="transition-delay:0.3s">
+          <div class="rounded-2xl overflow-hidden h-64 mb-5 shadow-[0_8px_30px_rgba(11,36,22,0.12)]">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80&facepad=3&fit=facearea" alt="Alicia P." class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-display font-semibold text-xl text-forest mb-1">Alicia P.</h3>
+          <div class="text-gold text-sm font-medium mb-2">Client Relations</div>
+          <p class="text-forest/55 text-sm">Your advocate from the first call. Alicia ensures every client experience exceeds expectations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS & CERTS -->
+  <section class="py-20 bg-forest">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center fade-up">
+      <div class="text-gold text-sm font-semibold tracking-[0.2em] uppercase mb-4">Recognition</div>
+      <h2 class="font-display font-semibold text-3xl text-white mb-12">Certifications & Awards</h2>
+      <div class="flex flex-wrap items-center justify-center gap-8 lg:gap-16">
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center"><svg class="w-8 h-8 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+          <div class="text-white font-medium text-sm">NALP Certified</div>
+          <div class="text-white/50 text-xs">Since 2011</div>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center"><svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+          <div class="text-white font-medium text-sm">ISA Certified</div>
+          <div class="text-white/50 text-xs">Arborists on Staff</div>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center"><svg class="w-8 h-8 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zm0 16a3 3 0 01-3-3h6a3 3 0 01-3 3z"/></svg></div>
+          <div class="text-white font-medium text-sm">Angi Super Service</div>
+          <div class="text-white/50 text-xs">Award 2022–2024</div>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center"><svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+          <div class="text-white font-medium text-sm">Neighborly Approved</div>
+          <div class="text-white/50 text-xs">Top Rated Local</div>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center"><svg class="w-8 h-8 text-gold" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg></div>
+          <div class="text-white font-medium text-sm">BBB A+ Rating</div>
+          <div class="text-white/50 text-xs">Accredited Business</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-cream py-20 text-center px-6">
+    <div class="max-w-2xl mx-auto fade-up">
+      <h2 class="font-display font-semibold text-4xl lg:text-5xl text-forest mb-5">Let's Build Something Beautiful Together</h2>
+      <p class="text-forest/65 text-lg mb-8">Get your free, no-obligation estimate from the team that shows up and delivers.</p>
+      <a href="contact.html" class="gold-btn inline-block text-forest font-bold px-10 py-4 rounded-full text-base tracking-wide">Request Free Estimate →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-forest text-white border-t border-white/10 py-10 px-6 lg:px-12">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-white/40 text-sm">© 2025 Verdant Landscape Co. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="index.html" class="text-white/40 text-sm hover:text-gold transition-colors">Home</a>
+        <a href="services.html" class="text-white/40 text-sm hover:text-gold transition-colors">Services</a>
+        <a href="contact.html" class="text-white/40 text-sm hover:text-gold transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('mobile-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
