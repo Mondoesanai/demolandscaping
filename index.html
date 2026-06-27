@@ -3,24 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verdant Lawn Care | Professional Lawn Mowing & Yard Services</title>
-  <meta name="description" content="Verdant Lawn Care provides professional lawn mowing, hedge trimming, leaf removal, and yard cleanup services. Get your free estimate today — we respond within 24 hours.">
-  <meta name="keywords" content="lawn mowing, lawn care, hedge trimming, leaf removal, yard cleanup, grass cutting, landscaping">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LandscapeService",
-    "name": "Verdant Lawn Care",
-    "telephone": "(123) 456-7890",
-    "email": "youremail@gmail.com",
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "214" }
-  }
-  </script>
+  <title>Demo — Custom Lawn Care Website</title>
+  <meta name="description" content="Professional lawn mowing, hedge trimming, and yard cleanup. Get a free quote today.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
@@ -28,9 +16,12 @@
       theme: {
         extend: {
           colors: {
-            green: { dark: '#0B3D1E', mid: '#145A32', base: '#1E8449', light: '#27AE60', pale: '#A9DFBF' },
-            gold: { DEFAULT: '#F0A500', light: '#F5C842' },
-            cream: '#F9F9F4'
+            dark:  '#0B3D1E',
+            mid:   '#145A32',
+            green: '#1E8449',
+            light: '#27AE60',
+            gold:  '#F0A500',
+            cream: '#F8F8F3',
           },
           fontFamily: {
             head: ['Montserrat', 'sans-serif'],
@@ -43,709 +34,401 @@
 
   <style>
     * { font-family: 'Open Sans', sans-serif; }
-    h1, h2, h3, h4, .font-head { font-family: 'Montserrat', sans-serif; }
+    h1,h2,h3,h4,.font-head { font-family: 'Montserrat', sans-serif; }
 
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #0B3D1E; }
-    ::-webkit-scrollbar-thumb { background: #F0A500; border-radius: 3px; }
-
-    .hero-bg {
-      background-image:
-        linear-gradient(to right, rgba(11,61,30,0.92) 0%, rgba(11,61,30,0.75) 50%, rgba(11,61,30,0.55) 100%),
-        url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1920&q=85&fit=crop');
-      background-size: cover;
-      background-position: center;
-      background-color: #145A32;
-    }
-
-    .nav-solid { background: rgba(11,61,30,0.97); backdrop-filter: blur(10px); }
+    .nav-bg { background: rgba(11,61,30,0.97); backdrop-filter: blur(10px); }
 
     .gold-btn {
-      background: linear-gradient(135deg, #F0A500, #F5C842, #F0A500);
+      background: linear-gradient(135deg, #F0A500 0%, #F5C842 50%, #F0A500 100%);
       background-size: 200%;
-      transition: background-position 0.4s, transform 0.2s, box-shadow 0.3s;
+      transition: background-position .4s, transform .2s, box-shadow .3s;
+      font-family: 'Montserrat', sans-serif;
     }
-    .gold-btn:hover { background-position: right; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(240,165,0,0.4); }
-    .gold-btn:active { transform: translateY(0); }
+    .gold-btn:hover { background-position: right; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(240,165,0,.4); }
 
-    .outline-white {
-      border: 2px solid rgba(255,255,255,0.6);
-      transition: border-color 0.3s, background 0.3s, transform 0.2s;
-    }
-    .outline-white:hover { border-color: #F0A500; background: rgba(240,165,0,0.1); transform: translateY(-2px); }
-
-    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
-    .fade-up.in { opacity: 1; transform: translateY(0); }
-
-    .service-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(11,61,30,0.15); }
-
-    .card-img { overflow: hidden; }
-    .card-img img { transition: transform 0.5s ease; }
-    .service-card:hover .card-img img { transform: scale(1.05); }
-
-    .gallery-img { overflow: hidden; }
-    .gallery-img img { transition: transform 0.5s ease; }
-    .gallery-img:hover img { transform: scale(1.07); }
-
-    .cta-bg {
-      background-image:
-        linear-gradient(rgba(11,61,30,0.88), rgba(11,61,30,0.88)),
-        url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1920&q=80&fit=crop');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      background-color: #0B3D1E;
+    .hero-bg {
+      background: linear-gradient(to right, rgba(11,61,30,.93) 0%, rgba(11,61,30,.75) 55%, rgba(11,61,30,.45) 100%),
+                  url('images/mowing-crew-1.png') center/cover no-repeat;
     }
 
-    .form-input {
-      width: 100%;
-      background: #f5f5f0;
-      border: 2px solid #e8e8e0;
-      border-radius: 10px;
-      padding: 12px 16px;
-      font-size: 14px;
-      color: #0B3D1E;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      font-family: 'Open Sans', sans-serif;
-    }
-    .form-input:focus { outline: none; border-color: #1E8449; box-shadow: 0 0 0 3px rgba(30,132,73,0.12); }
-    .form-input::placeholder { color: #999; }
+    .fade-up { opacity:0; transform:translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-up.in { opacity:1; transform:translateY(0); }
 
-    @keyframes pulse-ring {
-      0% { transform: scale(1); opacity: 0.6; }
-      100% { transform: scale(1.5); opacity: 0; }
-    }
-    .pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+    .photo-card { overflow:hidden; }
+    .photo-card img { transition: transform .5s ease; }
+    .photo-card:hover img { transform: scale(1.06); }
+
+    ::-webkit-scrollbar { width:4px; }
+    ::-webkit-scrollbar-track { background:#0B3D1E; }
+    ::-webkit-scrollbar-thumb { background:#F0A500; border-radius:2px; }
   </style>
 </head>
 
-<body class="bg-cream text-green-dark overflow-x-hidden">
+<body class="bg-cream text-dark overflow-x-hidden">
 
-  <!-- ===== NAV ===== -->
-  <nav class="nav-solid fixed top-0 left-0 right-0 z-50 px-5 lg:px-10">
-    <div class="max-w-7xl mx-auto flex items-center justify-between h-18 py-4">
-
-      <!-- LOGO PLACEHOLDER -->
-      <a href="index.html" class="flex items-center">
-        <div class="border-2 border-gold/60 rounded-lg px-4 py-2 bg-white/5">
+  <!-- NAV -->
+  <nav class="nav-bg fixed top-0 inset-x-0 z-50 px-5 lg:px-10">
+    <div class="max-w-6xl mx-auto flex items-center justify-between h-[68px]">
+      <a href="index.html">
+        <div class="border-2 border-gold/60 rounded-lg px-4 py-2">
           <span class="font-head font-bold text-gold text-sm tracking-widest uppercase">[ YOUR LOGO ]</span>
         </div>
       </a>
-
-      <!-- Desktop Nav -->
-      <div class="hidden lg:flex items-center gap-7">
-        <a href="index.html" class="text-white text-sm font-semibold border-b-2 border-gold pb-0.5 font-head">Home</a>
-        <a href="services.html" class="text-white/75 text-sm font-semibold hover:text-white transition-colors font-head">Services</a>
-        <a href="about.html" class="text-white/75 text-sm font-semibold hover:text-white transition-colors font-head">About</a>
-        <a href="gallery.html" class="text-white/75 text-sm font-semibold hover:text-white transition-colors font-head">Gallery</a>
-        <a href="contact.html" class="text-white/75 text-sm font-semibold hover:text-white transition-colors font-head">Contact</a>
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="index.html"   class="font-head font-semibold text-sm text-white border-b-2 border-gold pb-0.5">Home</a>
+        <a href="services.html" class="font-head font-semibold text-sm text-white/70 hover:text-white transition-colors">Services</a>
+        <a href="about.html"   class="font-head font-semibold text-sm text-white/70 hover:text-white transition-colors">About</a>
+        <a href="gallery.html" class="font-head font-semibold text-sm text-white/70 hover:text-white transition-colors">Gallery</a>
+        <a href="contact.html" class="font-head font-semibold text-sm text-white/70 hover:text-white transition-colors">Contact</a>
       </div>
-
       <div class="hidden lg:flex items-center gap-4">
-        <a href="tel:1234567890" class="flex items-center gap-2 text-white/80 text-sm font-semibold hover:text-gold transition-colors">
-          <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-          (123) 456-7890
-        </a>
-        <a href="contact.html" class="gold-btn font-head font-bold text-green-dark text-sm px-6 py-2.5 rounded-full">Free Quote</a>
+        <a href="tel:1234567890" class="font-head font-semibold text-sm text-white/80 hover:text-gold transition-colors">(123) 456-7890</a>
+        <a href="contact.html" class="gold-btn font-bold text-dark text-sm px-6 py-2.5 rounded-full">Free Quote</a>
       </div>
-
-      <button id="mobile-toggle" class="lg:hidden text-white p-2" aria-label="Menu">
+      <button id="menu-btn" class="lg:hidden text-white p-2">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-green-dark border-t border-white/10 pb-5 px-5">
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-white/10 pb-5 px-2">
       <div class="flex flex-col gap-4 pt-5">
-        <a href="index.html" class="text-white font-head font-semibold text-base hover:text-gold">Home</a>
-        <a href="services.html" class="text-white/80 font-head font-semibold text-base hover:text-gold">Services</a>
-        <a href="about.html" class="text-white/80 font-head font-semibold text-base hover:text-gold">About</a>
-        <a href="gallery.html" class="text-white/80 font-head font-semibold text-base hover:text-gold">Gallery</a>
-        <a href="contact.html" class="text-white/80 font-head font-semibold text-base hover:text-gold">Contact</a>
-        <div class="border-t border-white/10 pt-4">
-          <a href="tel:1234567890" class="block text-gold font-semibold mb-3">(123) 456-7890</a>
-          <a href="contact.html" class="gold-btn inline-block font-head font-bold text-green-dark text-sm px-7 py-3 rounded-full">Get Free Quote</a>
-        </div>
+        <a href="index.html"    class="font-head font-semibold text-white">Home</a>
+        <a href="services.html" class="font-head font-semibold text-white/75 hover:text-white">Services</a>
+        <a href="about.html"    class="font-head font-semibold text-white/75 hover:text-white">About</a>
+        <a href="gallery.html"  class="font-head font-semibold text-white/75 hover:text-white">Gallery</a>
+        <a href="contact.html"  class="font-head font-semibold text-white/75 hover:text-white">Contact</a>
+        <a href="contact.html"  class="gold-btn inline-block font-bold text-dark text-sm px-7 py-3 rounded-full w-max mt-1">Get Free Quote</a>
       </div>
     </div>
   </nav>
 
   <!-- ===== HERO ===== -->
-  <section class="hero-bg min-h-screen flex items-center pt-16">
-    <div class="max-w-7xl mx-auto px-5 lg:px-10 py-20 w-full">
-      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+  <section class="hero-bg min-h-screen flex items-center pt-[68px]">
+    <div class="max-w-6xl mx-auto px-5 lg:px-10 py-20 w-full">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
 
-        <!-- LEFT — Headline -->
+        <!-- Left -->
         <div class="fade-up">
-          <div class="inline-flex items-center gap-2 bg-gold/15 border border-gold/30 rounded-full px-4 py-2 mb-7">
-            <span class="text-gold">★★★★★</span>
-            <span class="text-white/90 text-sm font-semibold">5.0 Stars · 200+ Happy Customers</span>
+          <div class="flex items-center gap-2 mb-5">
+            <div class="flex text-gold text-sm">★★★★★</div>
+            <span class="text-white/70 text-sm">5.0 Stars · 200+ Happy Customers</span>
           </div>
-
-          <h1 class="font-head font-extrabold text-white leading-tight mb-5 text-4xl sm:text-5xl lg:text-6xl">
-            Professional Lawn Care<br>
-            <span class="text-gold">You Can Count On</span>
+          <h1 class="font-head font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.1] mb-5">
+            Professional<br>Lawn Care<br><span class="text-gold">You Can Count On</span>
           </h1>
-
-          <p class="text-white/75 text-lg leading-relaxed mb-8">
+          <p class="text-white/70 text-base leading-relaxed mb-8 max-w-md">
             We mow, edge, trim, and clean your yard — so you can spend your weekends doing what you actually enjoy. Fast, reliable, and affordable.
           </p>
-
-          <div class="grid grid-cols-2 gap-3 mb-8">
-            <div class="flex items-center gap-2.5">
-              <div class="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-                <svg class="w-3.5 h-3.5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-              </div>
-              <span class="text-white/85 text-sm font-semibold">Licensed & Insured</span>
-            </div>
-            <div class="flex items-center gap-2.5">
-              <div class="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-                <svg class="w-3.5 h-3.5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-              </div>
-              <span class="text-white/85 text-sm font-semibold">Same-Week Service</span>
-            </div>
-            <div class="flex items-center gap-2.5">
-              <div class="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-                <svg class="w-3.5 h-3.5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-              </div>
-              <span class="text-white/85 text-sm font-semibold">Free Estimates</span>
-            </div>
-            <div class="flex items-center gap-2.5">
-              <div class="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-                <svg class="w-3.5 h-3.5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-              </div>
-              <span class="text-white/85 text-sm font-semibold">Satisfaction Guaranteed</span>
-            </div>
+          <div class="flex flex-wrap gap-4 mb-8">
+            <div class="flex items-center gap-2 text-white/80 text-sm"><span class="text-gold">✓</span> Licensed & Insured</div>
+            <div class="flex items-center gap-2 text-white/80 text-sm"><span class="text-gold">✓</span> Same-Week Service</div>
+            <div class="flex items-center gap-2 text-white/80 text-sm"><span class="text-gold">✓</span> Satisfaction Guaranteed</div>
           </div>
-
-          <!-- Phone CTA -->
-          <a href="tel:1234567890" class="inline-flex items-center gap-3 text-white hover:text-gold transition-colors group">
-            <div class="relative w-12 h-12 flex-shrink-0">
-              <div class="absolute inset-0 rounded-full bg-gold/30 pulse-ring"></div>
-              <div class="relative w-12 h-12 bg-gold rounded-full flex items-center justify-center shadow-lg">
-                <svg class="w-5 h-5 text-green-dark" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-              </div>
-            </div>
+          <a href="tel:1234567890" class="inline-flex items-center gap-3 bg-white/10 border border-white/20 hover:border-gold rounded-2xl px-5 py-3 transition-colors">
+            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
             <div>
-              <div class="text-white/60 text-xs font-semibold uppercase tracking-wide">Call or Text Anytime</div>
-              <div class="text-white font-head font-bold text-xl group-hover:text-gold transition-colors">(123) 456-7890</div>
+              <div class="text-gold font-head font-bold text-base">(123) 456-7890</div>
+              <div class="text-white/50 text-xs">Call or text anytime</div>
             </div>
           </a>
         </div>
 
-        <!-- RIGHT — Quote Form -->
-        <div class="fade-up" style="transition-delay:0.15s">
-          <div class="bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.35)] overflow-hidden">
-            <!-- Form Header -->
-            <div class="bg-green-dark px-7 py-5">
-              <h2 class="font-head font-bold text-white text-xl mb-0.5">Get a Free Quote</h2>
-              <p class="text-white/65 text-sm">We'll respond within 24 hours.</p>
-            </div>
+        <!-- Right — Quote Form -->
+        <div class="fade-up" style="transition-delay:.15s">
+          <div class="bg-white rounded-2xl p-7 shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
+            <h2 class="font-head font-bold text-xl text-dark mb-1">Get a Free Quote</h2>
+            <p class="text-dark/50 text-sm mb-5">We'll respond within 24 hours and can often get you scheduled that same week.</p>
 
-            <!-- Form Body -->
-            <div class="px-7 py-6">
-              <form id="hero-form" onsubmit="submitHeroForm(event)" novalidate>
-                <div class="space-y-4">
-                  <div>
-                    <label class="block text-green-dark font-semibold text-sm mb-1.5">Your Name <span class="text-red-500">*</span></label>
-                    <input type="text" name="name" required placeholder="John Smith" class="form-input">
-                  </div>
-                  <div>
-                    <label class="block text-green-dark font-semibold text-sm mb-1.5">Phone Number <span class="text-red-500">*</span></label>
-                    <input type="tel" name="phone" required placeholder="(123) 456-7890" class="form-input">
-                  </div>
-                  <div>
-                    <label class="block text-green-dark font-semibold text-sm mb-1.5">Email Address <span class="text-red-500">*</span></label>
-                    <input type="email" name="email" required placeholder="john@email.com" class="form-input">
-                  </div>
-                  <div>
-                    <label class="block text-green-dark font-semibold text-sm mb-1.5">Service Needed</label>
-                    <select name="service" class="form-input">
-                      <option value="Lawn Mowing">Lawn Mowing & Edging</option>
-                      <option value="Hedge Trimming">Hedge & Bush Trimming</option>
-                      <option value="Leaf Removal">Leaf Removal & Cleanup</option>
-                      <option value="Mulching">Mulching</option>
-                      <option value="Weed Control">Weed Control & Fertilization</option>
-                      <option value="Full Cleanup">Full Yard Cleanup</option>
-                      <option value="Other">Other / Not Sure Yet</option>
-                    </select>
-                  </div>
-                  <button type="submit" class="gold-btn w-full font-head font-bold text-green-dark py-3.5 rounded-xl text-base mt-2">
-                    Get My Free Quote →
-                  </button>
-                </div>
-              </form>
+            <form id="hero-form" onsubmit="submitForm(event)" class="space-y-3">
+              <input type="text"  name="name"    required placeholder="Your Name *"         class="w-full bg-cream border-2 border-gray-200 focus:border-green outline-none rounded-xl px-4 py-3 text-sm text-dark placeholder:text-dark/40 transition-colors">
+              <input type="tel"   name="phone"   required placeholder="Phone Number *"      class="w-full bg-cream border-2 border-gray-200 focus:border-green outline-none rounded-xl px-4 py-3 text-sm text-dark placeholder:text-dark/40 transition-colors">
+              <input type="email" name="email"   required placeholder="Email Address *"     class="w-full bg-cream border-2 border-gray-200 focus:border-green outline-none rounded-xl px-4 py-3 text-sm text-dark placeholder:text-dark/40 transition-colors">
+              <select name="service" class="w-full bg-cream border-2 border-gray-200 focus:border-green outline-none rounded-xl px-4 py-3 text-sm text-dark transition-colors">
+                <option value="Lawn Mowing & Edging">Lawn Mowing & Edging</option>
+                <option value="Hedge & Bush Trimming">Hedge & Bush Trimming</option>
+                <option value="Leaf Removal & Cleanup">Leaf Removal & Cleanup</option>
+                <option value="Fertilization & Weed Control">Fertilization & Weed Control</option>
+                <option value="Full Yard Cleanup">Full Yard Cleanup</option>
+                <option value="Not Sure — Just Get a Quote">Not Sure — Just Get a Quote</option>
+              </select>
+              <button type="submit" class="gold-btn w-full font-bold text-dark text-base py-3.5 rounded-xl">Get My Free Quote →</button>
+            </form>
 
-              <!-- Success state (hidden) -->
-              <div id="form-success" class="hidden text-center py-4">
-                <div class="w-14 h-14 rounded-full bg-green-mid/15 flex items-center justify-center mx-auto mb-3">
-                  <svg class="w-7 h-7 text-green-base" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                </div>
-                <p class="font-head font-bold text-green-dark text-lg mb-1">Request Sent!</p>
-                <p class="text-green-dark/60 text-sm">We'll reach out within 24 hours to confirm your free estimate.</p>
-              </div>
-
-              <div class="flex items-center justify-center gap-1.5 mt-4">
-                <svg class="w-3.5 h-3.5 text-green-dark/40" fill="currentColor" viewBox="0 0 20 20"><path d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"/></svg>
-                <span class="text-green-dark/40 text-xs">No spam. We respect your privacy.</span>
-              </div>
+            <div id="form-success" class="hidden text-center py-6">
+              <div class="text-4xl mb-3">✅</div>
+              <p class="font-head font-bold text-dark text-lg">Quote Request Sent!</p>
+              <p class="text-dark/60 text-sm mt-1">We'll follow up within 24 hours.</p>
             </div>
           </div>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== STATS BAR ===== -->
-  <section class="bg-green-dark py-10 lg:py-12">
-    <div class="max-w-7xl mx-auto px-5 lg:px-10">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-        <div class="fade-up">
-          <div class="font-head font-extrabold text-4xl text-gold mb-1"><span class="counter" data-target="10">0</span>+</div>
-          <div class="text-white/60 text-xs font-semibold tracking-widest uppercase">Years of Experience</div>
-        </div>
-        <div class="fade-up" style="transition-delay:0.1s">
-          <div class="font-head font-extrabold text-4xl text-gold mb-1"><span class="counter" data-target="500">0</span>+</div>
-          <div class="text-white/60 text-xs font-semibold tracking-widest uppercase">Yards Maintained</div>
-        </div>
-        <div class="fade-up" style="transition-delay:0.2s">
-          <div class="font-head font-extrabold text-4xl text-gold mb-1">5.0 ★</div>
-          <div class="text-white/60 text-xs font-semibold tracking-widest uppercase">Google Rating</div>
-        </div>
-        <div class="fade-up" style="transition-delay:0.3s">
-          <div class="font-head font-extrabold text-4xl text-gold mb-1">100%</div>
-          <div class="text-white/60 text-xs font-semibold tracking-widest uppercase">Satisfaction Guaranteed</div>
-        </div>
       </div>
     </div>
   </section>
 
   <!-- ===== SERVICES ===== -->
-  <section class="py-20 lg:py-28 bg-cream">
-    <div class="max-w-7xl mx-auto px-5 lg:px-10">
-      <div class="text-center max-w-2xl mx-auto mb-14 fade-up">
-        <div class="inline-block text-green-base text-xs font-bold tracking-[0.2em] uppercase mb-3">What We Do</div>
-        <h2 class="font-head font-extrabold text-3xl lg:text-4xl text-green-dark mb-4">Our Lawn Care Services</h2>
-        <p class="text-green-dark/60 leading-relaxed">Everything your yard needs to look its best — handled by a reliable local crew that shows up on time and does the job right.</p>
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-6xl mx-auto px-5 lg:px-10">
+      <div class="text-center mb-12 fade-up">
+        <p class="font-head font-bold text-green text-xs tracking-[.2em] uppercase mb-2">What We Do</p>
+        <h2 class="font-head font-extrabold text-3xl lg:text-4xl text-dark">Our Lawn Care Services</h2>
+        <p class="text-dark/55 mt-3 max-w-xl mx-auto">Everything your yard needs — done by a reliable local crew that shows up and does the job right.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+      <div class="grid md:grid-cols-3 gap-6">
 
-        <!-- Lawn Mowing -->
-        <div class="service-card bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(11,61,30,0.08)] fade-up">
-          <div class="h-48 relative overflow-hidden" style="background:linear-gradient(135deg,#0B3D1E 0%,#1E8449 100%)">
-            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80&fit=crop" alt="Lawn mowing crew" class="w-full h-full object-cover" onerror="this.style.display='none'">
-            <div class="absolute inset-0 bg-gradient-to-t from-green-dark/60 to-transparent pointer-events-none"></div>
-            <span class="absolute bottom-3 left-3 bg-gold text-green-dark text-xs font-bold px-3 py-1 rounded-full z-10">Most Popular</span>
+        <!-- Mowing -->
+        <div class="photo-card bg-cream rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(11,61,30,.08)] hover:shadow-[0_12px_40px_rgba(11,61,30,.15)] transition-shadow fade-up">
+          <div class="h-52 overflow-hidden">
+            <img src="images/mowing-striped-lawn.png" alt="Lawn mowing crew on striped residential lawn" class="w-full h-full object-cover">
           </div>
           <div class="p-6">
-            <h3 class="font-head font-bold text-lg text-green-dark mb-2">Lawn Mowing & Edging</h3>
-            <p class="text-green-dark/60 text-sm leading-relaxed mb-4">Weekly and bi-weekly mowing with precise edging and cleanup. Your lawn will look crisp every single visit.</p>
-            <a href="services.html" class="text-green-base text-sm font-bold flex items-center gap-1 hover:gap-3 transition-all">Learn More →</a>
+            <span class="inline-block bg-gold text-dark text-xs font-head font-bold px-3 py-1 rounded-full mb-3">Most Popular</span>
+            <h3 class="font-head font-bold text-lg text-dark mb-2">Lawn Mowing & Edging</h3>
+            <p class="text-dark/60 text-sm leading-relaxed">Weekly or bi-weekly mowing with clean edging along every walkway and driveway. We blow everything off before we leave.</p>
           </div>
         </div>
 
         <!-- Hedge Trimming -->
-        <div class="service-card bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(11,61,30,0.08)] fade-up" style="transition-delay:0.1s">
-          <div class="h-48 relative overflow-hidden" style="background:linear-gradient(135deg,#145A32 0%,#27AE60 100%)">
-            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80&fit=crop" alt="Hedge trimming" class="w-full h-full object-cover" onerror="this.style.display='none'">
-            <div class="absolute inset-0 bg-gradient-to-t from-green-dark/60 to-transparent pointer-events-none"></div>
+        <div class="photo-card bg-cream rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(11,61,30,.08)] hover:shadow-[0_12px_40px_rgba(11,61,30,.15)] transition-shadow fade-up" style="transition-delay:.1s">
+          <div class="h-52 overflow-hidden">
+            <img src="images/hedge-trimming.png" alt="Worker trimming hedges and bushes" class="w-full h-full object-cover">
           </div>
           <div class="p-6">
-            <h3 class="font-head font-bold text-lg text-green-dark mb-2">Hedge & Bush Trimming</h3>
-            <p class="text-green-dark/60 text-sm leading-relaxed mb-4">Overgrown bushes and hedges cleaned up and shaped. We haul away all the debris so your yard is spotless.</p>
-            <a href="services.html" class="text-green-base text-sm font-bold flex items-center gap-1 hover:gap-3 transition-all">Learn More →</a>
+            <h3 class="font-head font-bold text-lg text-dark mb-2">Hedge & Bush Trimming</h3>
+            <p class="text-dark/60 text-sm leading-relaxed">Overgrown bushes shaped and cleaned up. We haul all the clippings away so your yard is spotless when we're done.</p>
           </div>
         </div>
 
-        <!-- Leaf Removal -->
-        <div class="service-card bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(11,61,30,0.08)] fade-up" style="transition-delay:0.2s">
-          <div class="h-48 relative overflow-hidden" style="background:linear-gradient(135deg,#0B3D1E 0%,#145A32 100%)">
-            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80&fit=crop" alt="Leaf removal and cleanup" class="w-full h-full object-cover" onerror="this.style.display='none'">
-            <div class="absolute inset-0 bg-gradient-to-t from-green-dark/60 to-transparent pointer-events-none"></div>
+        <!-- Fertilization -->
+        <div class="photo-card bg-cream rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(11,61,30,.08)] hover:shadow-[0_12px_40px_rgba(11,61,30,.15)] transition-shadow fade-up" style="transition-delay:.2s">
+          <div class="h-52 overflow-hidden">
+            <img src="images/fertilizer-residential.png" alt="Worker applying fertilizer on residential lawn" class="w-full h-full object-cover">
           </div>
           <div class="p-6">
-            <h3 class="font-head font-bold text-lg text-green-dark mb-2">Leaf Removal & Cleanup</h3>
-            <p class="text-green-dark/60 text-sm leading-relaxed mb-4">Fall leaf cleanup, yard debris removal, and property walkways cleared. We bag it, blow it, and haul it all away.</p>
-            <a href="services.html" class="text-green-base text-sm font-bold flex items-center gap-1 hover:gap-3 transition-all">Learn More →</a>
-          </div>
-        </div>
-
-        <!-- Mulching -->
-        <div class="service-card bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(11,61,30,0.08)] fade-up" style="transition-delay:0.05s">
-          <div class="h-48 relative overflow-hidden" style="background:linear-gradient(135deg,#1E8449 0%,#0B3D1E 100%)">
-            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80&fit=crop" alt="Mulching beds" class="w-full h-full object-cover" onerror="this.style.display='none'">
-            <div class="absolute inset-0 bg-gradient-to-t from-green-dark/60 to-transparent pointer-events-none"></div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-head font-bold text-lg text-green-dark mb-2">Mulching</h3>
-            <p class="text-green-dark/60 text-sm leading-relaxed mb-4">Fresh mulch installed in your flower beds and around trees. Keeps weeds down, retains moisture, and makes your yard pop.</p>
-            <a href="services.html" class="text-green-base text-sm font-bold flex items-center gap-1 hover:gap-3 transition-all">Learn More →</a>
-          </div>
-        </div>
-
-        <!-- Weed Control -->
-        <div class="service-card bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(11,61,30,0.08)] fade-up" style="transition-delay:0.15s">
-          <div class="h-48 relative overflow-hidden" style="background:linear-gradient(135deg,#145A32 0%,#1E8449 100%)">
-            <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80&fit=crop" alt="Lawn fertilization and weed control" class="w-full h-full object-cover" onerror="this.style.display='none'">
-            <div class="absolute inset-0 bg-gradient-to-t from-green-dark/60 to-transparent pointer-events-none"></div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-head font-bold text-lg text-green-dark mb-2">Weed Control & Fertilization</h3>
-            <p class="text-green-dark/60 text-sm leading-relaxed mb-4">Keep weeds out and your grass thick and green. We treat your lawn seasonally to keep it healthy year-round.</p>
-            <a href="services.html" class="text-green-base text-sm font-bold flex items-center gap-1 hover:gap-3 transition-all">Learn More →</a>
-          </div>
-        </div>
-
-        <!-- Seasonal / Full Cleanup -->
-        <div class="service-card bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(11,61,30,0.08)] fade-up" style="transition-delay:0.25s">
-          <div class="h-48 relative overflow-hidden" style="background:linear-gradient(135deg,#0B3D1E 0%,#27AE60 100%)">
-            <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=800&q=80&fit=crop" alt="Full yard cleanup" class="w-full h-full object-cover" onerror="this.style.display='none'">
-            <div class="absolute inset-0 bg-gradient-to-t from-green-dark/60 to-transparent pointer-events-none"></div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-head font-bold text-lg text-green-dark mb-2">Full Yard Cleanup</h3>
-            <p class="text-green-dark/60 text-sm leading-relaxed mb-4">Moving in? Preparing to sell? Need a total reset? We'll get your yard completely cleaned up in one visit.</p>
-            <a href="services.html" class="text-green-base text-sm font-bold flex items-center gap-1 hover:gap-3 transition-all">Learn More →</a>
+            <h3 class="font-head font-bold text-lg text-dark mb-2">Fertilization & Weed Control</h3>
+            <p class="text-dark/60 text-sm leading-relaxed">Keep your lawn thick, green, and weed-free. We treat your grass seasonally so it stays healthy all year long.</p>
           </div>
         </div>
 
       </div>
 
-      <div class="text-center fade-up">
-        <a href="services.html" class="inline-flex items-center gap-2 border-2 border-green-dark text-green-dark font-head font-bold px-8 py-3 rounded-full hover:bg-green-dark hover:text-white transition-all duration-300">
-          View All Services →
-        </a>
+      <div class="text-center mt-10 fade-up">
+        <a href="services.html" class="inline-flex items-center gap-2 border-2 border-dark text-dark font-head font-bold text-sm px-8 py-3 rounded-full hover:bg-dark hover:text-white transition-all duration-300">View All Services →</a>
       </div>
     </div>
   </section>
 
-  <!-- ===== WHY US (SPLIT) ===== -->
-  <section class="py-20 lg:py-28 bg-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-5 lg:px-10">
-      <div class="grid lg:grid-cols-2 gap-14 items-center">
-        <div class="relative fade-up">
-          <div class="rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(11,61,30,0.18)] h-[420px] bg-green-mid">
-            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80&fit=crop" alt="Lawn care professional at work" class="w-full h-full object-cover" onerror="this.style.display='none'">
-          </div>
-          <!-- Floating review badge -->
-          <div class="absolute -bottom-5 -right-4 lg:-right-6 bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] p-4 flex items-center gap-3">
-            <div class="text-gold text-2xl">★★★★★</div>
-            <div>
-              <div class="font-head font-bold text-green-dark text-sm">214 Reviews</div>
-              <div class="text-green-dark/50 text-xs">on Google</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="fade-up" style="transition-delay:0.15s">
-          <div class="text-green-base text-xs font-bold tracking-[0.2em] uppercase mb-3">Why Choose Us</div>
-          <h2 class="font-head font-extrabold text-3xl lg:text-4xl text-green-dark leading-tight mb-5">
-            A Lawn Crew That<br>Actually Shows Up
-          </h2>
-          <p class="text-green-dark/65 leading-relaxed mb-8 text-base">
-            We know you've dealt with no-shows, sloppy work, and crews that don't care. That's not us. We've built our reputation on showing up on time, doing clean work, and treating every yard like it's our own.
-          </p>
-          <div class="space-y-4 mb-8">
-            <div class="flex items-start gap-4">
-              <div class="w-9 h-9 rounded-full bg-gold/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-              </div>
-              <div>
-                <div class="font-head font-bold text-green-dark mb-0.5">We Show Up Every Time</div>
-                <div class="text-green-dark/60 text-sm">Scheduled service means scheduled service. No last-minute cancellations or missed visits.</div>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-9 h-9 rounded-full bg-gold/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-              </div>
-              <div>
-                <div class="font-head font-bold text-green-dark mb-0.5">Upfront, Honest Pricing</div>
-                <div class="text-green-dark/60 text-sm">No hidden fees. You get a quote, you approve it, that's what you pay. Simple.</div>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-9 h-9 rounded-full bg-gold/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-              </div>
-              <div>
-                <div class="font-head font-bold text-green-dark mb-0.5">We Redo It If You're Not Happy</div>
-                <div class="text-green-dark/60 text-sm">Not satisfied? We'll come back and fix it at no charge. That's our guarantee, every time.</div>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-9 h-9 rounded-full bg-gold/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-              </div>
-              <div>
-                <div class="font-head font-bold text-green-dark mb-0.5">Fully Licensed & Insured</div>
-                <div class="text-green-dark/60 text-sm">You're protected. We carry full insurance on every job — proof available on request.</div>
-              </div>
-            </div>
-          </div>
-          <a href="about.html" class="gold-btn inline-block font-head font-bold text-green-dark px-8 py-3.5 rounded-full">About Our Company →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== HOW IT WORKS ===== -->
-  <section class="py-20 lg:py-24 bg-cream">
+  <!-- ===== WHY US ===== -->
+  <section class="py-20 lg:py-28 bg-cream">
     <div class="max-w-6xl mx-auto px-5 lg:px-10">
-      <div class="text-center mb-14 fade-up">
-        <div class="text-green-base text-xs font-bold tracking-[0.2em] uppercase mb-3">Simple Process</div>
-        <h2 class="font-head font-extrabold text-3xl lg:text-4xl text-green-dark">Getting Started Is Easy</h2>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8 relative">
-        <div class="hidden md:block absolute top-10 left-[calc(16.67%+2rem)] right-[calc(16.67%+2rem)] h-0.5 bg-gold/30"></div>
-        <div class="text-center fade-up">
-          <div class="w-20 h-20 rounded-full bg-green-dark flex items-center justify-center mx-auto mb-5 shadow-[0_0_0_6px_rgba(11,61,30,0.12)]">
-            <span class="font-head font-extrabold text-3xl text-gold">1</span>
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Photo grid -->
+        <div class="grid grid-cols-2 gap-3 fade-up">
+          <div class="photo-card rounded-xl overflow-hidden h-48">
+            <img src="images/crew-mowing-trimming.png" alt="Lawn crew mowing and trimming" class="w-full h-full object-cover">
           </div>
-          <h3 class="font-head font-bold text-xl text-green-dark mb-2">Request a Quote</h3>
-          <p class="text-green-dark/60 text-sm leading-relaxed">Fill out the form above or give us a call. We'll set up a free on-site estimate at a time that works for you.</p>
+          <div class="photo-card rounded-xl overflow-hidden h-48">
+            <img src="images/commercial-mowing.png" alt="Commercial lawn mowing" class="w-full h-full object-cover">
+          </div>
+          <div class="photo-card rounded-xl overflow-hidden h-48">
+            <img src="images/mowing-driveway.png" alt="Worker mowing along driveway" class="w-full h-full object-cover">
+          </div>
+          <div class="photo-card rounded-xl overflow-hidden h-48">
+            <img src="images/team-on-lawn.png" alt="Lawn care team working" class="w-full h-full object-cover">
+          </div>
         </div>
-        <div class="text-center fade-up" style="transition-delay:0.15s">
-          <div class="w-20 h-20 rounded-full bg-green-dark flex items-center justify-center mx-auto mb-5 shadow-[0_0_0_6px_rgba(11,61,30,0.12)]">
-            <span class="font-head font-extrabold text-3xl text-gold">2</span>
+
+        <!-- Copy -->
+        <div class="fade-up" style="transition-delay:.1s">
+          <p class="font-head font-bold text-green text-xs tracking-[.2em] uppercase mb-3">Why Choose Us</p>
+          <h2 class="font-head font-extrabold text-3xl lg:text-4xl text-dark leading-tight mb-6">A Lawn Crew That Actually Shows Up</h2>
+          <div class="space-y-5">
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-full bg-green/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <div class="font-head font-bold text-dark mb-1">We Show Up Every Time</div>
+                <div class="text-dark/60 text-sm leading-relaxed">No last-minute cancellations. No excuses. We're on your schedule, every visit.</div>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-full bg-green/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <div class="font-head font-bold text-dark mb-1">Upfront, Honest Pricing</div>
+                <div class="text-dark/60 text-sm leading-relaxed">You get your price before we start. No hidden fees, no surprises on the bill.</div>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-full bg-green/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </div>
+              <div>
+                <div class="font-head font-bold text-dark mb-1">Licensed & Insured</div>
+                <div class="text-dark/60 text-sm leading-relaxed">Your property is protected on every job. We're fully licensed and insured so you don't have to worry.</div>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-full bg-green/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>
+              </div>
+              <div>
+                <div class="font-head font-bold text-dark mb-1">100% Satisfaction Guarantee</div>
+                <div class="text-dark/60 text-sm leading-relaxed">If you're not happy, we'll come back and fix it — free of charge. That's our promise.</div>
+              </div>
+            </div>
           </div>
-          <h3 class="font-head font-bold text-xl text-green-dark mb-2">Get Your Price</h3>
-          <p class="text-green-dark/60 text-sm leading-relaxed">We come out, look at your yard, and give you a straight, upfront price. No surprises, no pressure.</p>
-        </div>
-        <div class="text-center fade-up" style="transition-delay:0.3s">
-          <div class="w-20 h-20 rounded-full bg-green-dark flex items-center justify-center mx-auto mb-5 shadow-[0_0_0_6px_rgba(11,61,30,0.12)]">
-            <span class="font-head font-extrabold text-3xl text-gold">3</span>
-          </div>
-          <h3 class="font-head font-bold text-xl text-green-dark mb-2">Enjoy Your Yard</h3>
-          <p class="text-green-dark/60 text-sm leading-relaxed">We handle the work. You come home to a clean, freshly maintained yard and just enjoy it.</p>
+          <a href="contact.html" class="gold-btn inline-block font-bold text-dark text-sm px-8 py-3.5 rounded-full mt-8">Get a Free Quote →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== TESTIMONIALS ===== -->
-  <section class="py-20 lg:py-28 bg-green-dark">
-    <div class="max-w-7xl mx-auto px-5 lg:px-10">
-      <div class="text-center mb-12 fade-up">
-        <div class="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-3">Real Reviews</div>
-        <h2 class="font-head font-extrabold text-3xl lg:text-4xl text-white">What Our Customers Say</h2>
-      </div>
-      <div class="grid md:grid-cols-3 gap-5">
-        <div class="bg-white/8 border border-white/10 rounded-2xl p-6 fade-up hover:bg-white/12 transition-colors">
-          <div class="text-gold text-lg mb-4">★★★★★</div>
-          <p class="text-white/85 text-sm leading-relaxed mb-5">"These guys are awesome. My lawn looks better than it ever has and they show up every single week without fail. I've been through four other lawn services — none of them came close."</p>
-          <div class="flex items-center gap-3 border-t border-white/10 pt-4">
-            <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-              <span class="text-gold font-bold text-sm">MR</span>
-            </div>
-            <div>
-              <div class="text-white font-semibold text-sm">Marcus R.</div>
-              <div class="text-white/45 text-xs">Weekly Mowing Customer</div>
-            </div>
-          </div>
-        </div>
-        <div class="bg-white/8 border border-white/10 rounded-2xl p-6 fade-up hover:bg-white/12 transition-colors" style="transition-delay:0.1s">
-          <div class="text-gold text-lg mb-4">★★★★★</div>
-          <p class="text-white/85 text-sm leading-relaxed mb-5">"Called on a Monday, they were at my house by Wednesday. Did an incredible job on the hedges and hauled everything away. My yard went from embarrassing to the best-looking one on the street."</p>
-          <div class="flex items-center gap-3 border-t border-white/10 pt-4">
-            <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-              <span class="text-gold font-bold text-sm">TJ</span>
-            </div>
-            <div>
-              <div class="text-white font-semibold text-sm">Tamika J.</div>
-              <div class="text-white/45 text-xs">Hedge Trimming Customer</div>
-            </div>
-          </div>
-        </div>
-        <div class="bg-white/8 border border-white/10 rounded-2xl p-6 fade-up hover:bg-white/12 transition-colors" style="transition-delay:0.2s">
-          <div class="text-gold text-lg mb-4">★★★★★</div>
-          <p class="text-white/85 text-sm leading-relaxed mb-5">"Hired them for a full cleanup before putting my house on the market. The yard looked brand new. My realtor said curb appeal went through the roof. Definitely worth it."</p>
-          <div class="flex items-center gap-3 border-t border-white/10 pt-4">
-            <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-              <span class="text-gold font-bold text-sm">DW</span>
-            </div>
-            <div>
-              <div class="text-white font-semibold text-sm">Derrick W.</div>
-              <div class="text-white/45 text-xs">Full Yard Cleanup Customer</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== GALLERY PREVIEW ===== -->
-  <section class="py-20 lg:py-28 bg-white">
-    <div class="max-w-7xl mx-auto px-5 lg:px-10">
-      <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-5 mb-10 fade-up">
+  <!-- ===== OUR WORK ===== -->
+  <section class="py-20 lg:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-5 lg:px-10">
+      <div class="flex items-end justify-between mb-10 fade-up">
         <div>
-          <div class="text-green-base text-xs font-bold tracking-[0.2em] uppercase mb-2">Our Work</div>
-          <h2 class="font-head font-extrabold text-3xl lg:text-4xl text-green-dark">Recent Jobs</h2>
+          <p class="font-head font-bold text-green text-xs tracking-[.2em] uppercase mb-2">Our Work</p>
+          <h2 class="font-head font-extrabold text-3xl lg:text-4xl text-dark">Recent Jobs</h2>
         </div>
-        <a href="gallery.html" class="text-green-base font-bold text-sm flex items-center gap-1 hover:gap-3 transition-all">View All Photos →</a>
+        <a href="gallery.html" class="font-head font-bold text-green text-sm hover:text-dark transition-colors">View All →</a>
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="gallery-img rounded-xl overflow-hidden h-52 col-span-2 lg:col-span-1 fade-up" style="background:#145A32">
-          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80&fit=crop" alt="Clean lawn job" class="w-full h-full object-cover" onerror="this.style.display='none'">
+        <div class="photo-card rounded-xl overflow-hidden h-56 fade-up">
+          <img src="images/striped-lawn-mower.png" alt="Clean striped lawn" class="w-full h-full object-cover">
         </div>
-        <div class="gallery-img rounded-xl overflow-hidden h-52 fade-up" style="transition-delay:0.05s;background:#0B3D1E">
-          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80&fit=crop" alt="Yard maintenance" class="w-full h-full object-cover" onerror="this.style.display='none'">
+        <div class="photo-card rounded-xl overflow-hidden h-56 fade-up" style="transition-delay:.07s">
+          <img src="images/trimmer-action.png" alt="Weed trimmer in action" class="w-full h-full object-cover">
         </div>
-        <div class="gallery-img rounded-xl overflow-hidden h-52 fade-up" style="transition-delay:0.1s;background:#1E8449">
-          <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80&fit=crop" alt="Hedge trimming" class="w-full h-full object-cover" onerror="this.style.display='none'">
+        <div class="photo-card rounded-xl overflow-hidden h-56 fade-up" style="transition-delay:.14s">
+          <img src="images/clean-garden-mower.png" alt="Beautifully maintained garden" class="w-full h-full object-cover">
         </div>
-        <div class="gallery-img rounded-xl overflow-hidden h-52 fade-up" style="transition-delay:0.15s;background:#145A32">
-          <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80&fit=crop" alt="Lawn edging" class="w-full h-full object-cover" onerror="this.style.display='none'">
+        <div class="photo-card rounded-xl overflow-hidden h-56 fade-up" style="transition-delay:.07s">
+          <img src="images/mowing-crew-1.png" alt="Crew mowing residential lawn" class="w-full h-full object-cover">
         </div>
-        <div class="gallery-img rounded-xl overflow-hidden h-52 fade-up" style="transition-delay:0.2s;background:#0B3D1E">
-          <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=800&q=80&fit=crop" alt="Fresh mow" class="w-full h-full object-cover" onerror="this.style.display='none'">
+        <div class="photo-card rounded-xl overflow-hidden h-56 fade-up" style="transition-delay:.14s">
+          <img src="images/fertilizer-spreader.png" alt="Fertilizer spreader on commercial lawn" class="w-full h-full object-cover">
+        </div>
+        <div class="photo-card rounded-xl overflow-hidden h-56 fade-up" style="transition-delay:.21s">
+          <img src="images/spraying-lawn.png" alt="Lawn treatment and spraying" class="w-full h-full object-cover">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== BOTTOM CTA ===== -->
-  <section class="cta-bg py-24 lg:py-32 relative">
-    <div class="max-w-3xl mx-auto px-5 lg:px-10 text-center relative z-10 fade-up">
-      <div class="text-gold text-xs font-bold tracking-[0.25em] uppercase mb-4">Limited Spots Available</div>
-      <h2 class="font-head font-extrabold text-4xl sm:text-5xl text-white leading-tight mb-5">
-        Ready for a Yard<br>You're Proud Of?
-      </h2>
-      <p class="text-white/65 leading-relaxed mb-8 text-lg">Get your free estimate today — we'll respond within 24 hours and can often get you scheduled that same week.</p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="contact.html" class="gold-btn font-head font-bold text-green-dark text-base px-10 py-4 rounded-full w-full sm:w-auto text-center">Get My Free Quote →</a>
-        <a href="tel:1234567890" class="outline-white text-white font-head font-bold text-base px-10 py-4 rounded-full w-full sm:w-auto text-center">(123) 456-7890</a>
+  <!-- ===== REVIEWS ===== -->
+  <section class="py-20 lg:py-24 bg-dark">
+    <div class="max-w-6xl mx-auto px-5 lg:px-10">
+      <div class="text-center mb-12 fade-up">
+        <p class="font-head font-bold text-gold text-xs tracking-[.2em] uppercase mb-2">Real Reviews</p>
+        <h2 class="font-head font-extrabold text-3xl lg:text-4xl text-white">What Our Customers Say</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 fade-up">
+          <div class="text-gold text-lg mb-3">★★★★★</div>
+          <p class="text-white/80 text-sm leading-relaxed mb-4">"These guys are awesome. My lawn looks better than it ever has. They show up every single week without fail. None of those lawn care services compare."</p>
+          <div class="font-head font-bold text-white text-sm">Marcus R.</div>
+          <div class="text-white/40 text-xs">Homeowner · Columbus, OH</div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 fade-up" style="transition-delay:.1s">
+          <div class="text-gold text-lg mb-3">★★★★★</div>
+          <p class="text-white/80 text-sm leading-relaxed mb-4">"Called on a Monday, they were at my house by Wednesday. Did an incredible job on the hedges and hauled everything away. My yard went from embarrassing to the best-looking one on the block."</p>
+          <div class="font-head font-bold text-white text-sm">Tamika J.</div>
+          <div class="text-white/40 text-xs">Homeowner · Norcross, GA</div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 fade-up" style="transition-delay:.2s">
+          <div class="text-gold text-lg mb-3">★★★★★</div>
+          <p class="text-white/80 text-sm leading-relaxed mb-4">"Hired them for a full cleanup before putting my house on the market. The yard looked brand new. My realtor said it added curb appeal worth every penny."</p>
+          <div class="font-head font-bold text-white text-sm">Derrik M.</div>
+          <div class="text-white/40 text-xs">Homeowner · Austin, TX</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER CTA ===== -->
+  <section class="py-20 bg-mid">
+    <div class="max-w-2xl mx-auto px-5 text-center fade-up">
+      <p class="font-head font-bold text-gold text-xs tracking-[.2em] uppercase mb-3">Ready to Get Started?</p>
+      <h2 class="font-head font-extrabold text-3xl lg:text-4xl text-white leading-tight mb-4">Get a Yard You're Proud Of</h2>
+      <p class="text-white/60 leading-relaxed mb-8">Call or fill out the form — we respond within 24 hours and can usually get you on the schedule that same week.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="contact.html" class="gold-btn font-bold text-dark text-base px-10 py-4 rounded-full">Get My Free Quote →</a>
+        <a href="tel:1234567890" class="border-2 border-white/40 hover:border-gold text-white font-head font-bold text-base px-10 py-4 rounded-full transition-colors">(123) 456-7890</a>
       </div>
     </div>
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="bg-green-dark text-white">
-    <div class="max-w-7xl mx-auto px-5 lg:px-10 py-14">
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+  <footer class="bg-dark text-white py-12 px-5 lg:px-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-10 mb-10">
         <div>
-          <div class="border-2 border-gold/50 rounded-lg px-4 py-2.5 inline-block mb-4">
+          <div class="border-2 border-gold/50 rounded-lg px-4 py-2 inline-block mb-4">
             <span class="font-head font-bold text-gold text-sm tracking-widest">[ YOUR LOGO ]</span>
           </div>
-          <p class="text-white/50 text-sm leading-relaxed mb-5">Professional lawn mowing, hedge trimming, and yard care you can count on. Your yard is our priority.</p>
-          <div class="flex gap-3">
-            <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-green-dark transition-all" aria-label="Facebook">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-            </a>
-            <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-green-dark transition-all" aria-label="Instagram">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="2"/><path stroke-width="2" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/></svg>
-            </a>
-            <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-green-dark transition-all" aria-label="Google">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 110-12.064c1.498 0 2.866.549 3.921 1.453l2.814-2.814A9.969 9.969 0 0012.545 3C7.021 3 2.543 7.477 2.543 13s4.478 10 10.002 10c8.396 0 10.249-7.85 9.426-11.748l-9.426-.013z"/></svg>
-            </a>
+          <p class="text-white/50 text-sm leading-relaxed">Professional lawn mowing, hedge trimming, and yard cleanup. Serving residential and commercial properties.</p>
+        </div>
+        <div>
+          <h4 class="font-head font-bold text-white mb-4">Services</h4>
+          <ul class="space-y-2 text-white/55 text-sm">
+            <li><a href="services.html" class="hover:text-white transition-colors">Lawn Mowing & Edging</a></li>
+            <li><a href="services.html" class="hover:text-white transition-colors">Hedge & Bush Trimming</a></li>
+            <li><a href="services.html" class="hover:text-white transition-colors">Leaf Removal & Cleanup</a></li>
+            <li><a href="services.html" class="hover:text-white transition-colors">Fertilization & Weed Control</a></li>
+            <li><a href="services.html" class="hover:text-white transition-colors">Full Yard Cleanup</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-head font-bold text-white mb-4">Contact</h4>
+          <div class="space-y-2 text-white/55 text-sm">
+            <p><a href="tel:1234567890" class="hover:text-white transition-colors">(123) 456-7890</a></p>
+            <p><a href="mailto:youremail@gmail.com" class="hover:text-white transition-colors">youremail@gmail.com</a></p>
+            <a href="contact.html" class="gold-btn inline-block font-bold text-dark text-sm px-6 py-2.5 rounded-full mt-4">Get Free Quote</a>
           </div>
         </div>
-        <div>
-          <h4 class="font-head font-bold text-xs tracking-widest uppercase text-white/40 mb-4">Services</h4>
-          <ul class="space-y-2.5">
-            <li><a href="services.html" class="text-white/60 text-sm hover:text-gold transition-colors">Lawn Mowing & Edging</a></li>
-            <li><a href="services.html" class="text-white/60 text-sm hover:text-gold transition-colors">Hedge & Bush Trimming</a></li>
-            <li><a href="services.html" class="text-white/60 text-sm hover:text-gold transition-colors">Leaf Removal & Cleanup</a></li>
-            <li><a href="services.html" class="text-white/60 text-sm hover:text-gold transition-colors">Mulching</a></li>
-            <li><a href="services.html" class="text-white/60 text-sm hover:text-gold transition-colors">Weed Control & Fertilization</a></li>
-            <li><a href="services.html" class="text-white/60 text-sm hover:text-gold transition-colors">Full Yard Cleanup</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-head font-bold text-xs tracking-widest uppercase text-white/40 mb-4">Company</h4>
-          <ul class="space-y-2.5">
-            <li><a href="about.html" class="text-white/60 text-sm hover:text-gold transition-colors">About Us</a></li>
-            <li><a href="gallery.html" class="text-white/60 text-sm hover:text-gold transition-colors">Photo Gallery</a></li>
-            <li><a href="contact.html" class="text-white/60 text-sm hover:text-gold transition-colors">Get a Free Quote</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-head font-bold text-xs tracking-widest uppercase text-white/40 mb-4">Contact</h4>
-          <ul class="space-y-3">
-            <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-gold flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-              <a href="tel:1234567890" class="text-white/60 text-sm hover:text-gold transition-colors">(123) 456-7890</a>
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              <a href="mailto:youremail@gmail.com" class="text-white/60 text-sm hover:text-gold transition-colors">youremail@gmail.com</a>
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <span class="text-white/60 text-sm">Mon–Sat: 7am – 6pm</span>
-            </li>
-          </ul>
-        </div>
       </div>
-      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-3">
-        <p class="text-white/35 text-sm">© 2025 Verdant Lawn Care. All rights reserved.</p>
-        <div class="flex gap-5">
-          <a href="#" class="text-white/35 text-sm hover:text-gold transition-colors">Privacy Policy</a>
-          <a href="#" class="text-white/35 text-sm hover:text-gold transition-colors">Terms of Service</a>
-        </div>
+      <div class="border-t border-white/10 pt-6 text-center text-white/30 text-xs">
+        © 2025 Your Lawn Care Company. All rights reserved. · <a href="#" class="hover:text-white/60">Privacy Policy</a>
       </div>
     </div>
   </footer>
 
   <script>
     // Mobile menu
-    document.getElementById('mobile-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
 
-    // Hero form → mailto
-    function submitHeroForm(e) {
+    // Form submit → mailto
+    function submitForm(e) {
       e.preventDefault();
       const f = e.target;
       const name    = f.querySelector('[name=name]').value.trim();
       const phone   = f.querySelector('[name=phone]').value.trim();
       const email   = f.querySelector('[name=email]').value.trim();
       const service = f.querySelector('[name=service]').value;
-
-      // Validate
-      if (!name || !phone || !email) {
-        alert('Please fill in your name, phone, and email.');
-        return;
-      }
-
-      const subject = encodeURIComponent(`New Quote Request — ${service}`);
+      if (!name || !phone || !email) { alert('Please fill in your name, phone, and email.'); return; }
+      const subject = encodeURIComponent('New Quote Request — ' + service);
       const body = encodeURIComponent(
-        `Hi,\n\nYou have a new quote request from your website:\n\n` +
-        `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nService: ${service}\n\n` +
-        `Please follow up as soon as possible.\n\n— Sent from your website form`
+        'Hi,\n\nNew quote request from your website:\n\n' +
+        'Name: ' + name + '\nPhone: ' + phone + '\nEmail: ' + email + '\nService: ' + service +
+        '\n\nPlease follow up as soon as possible.\n\n— Sent from your website'
       );
-
-      // Change this email to the client's actual email address
-      window.location.href = `mailto:youremail@gmail.com?subject=${subject}&body=${body}`;
-
-      // Show success message
+      window.location.href = 'mailto:youremail@gmail.com?subject=' + subject + '&body=' + body;
       f.classList.add('hidden');
       document.getElementById('form-success').classList.remove('hidden');
     }
 
-    // Fade-up on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Counter animation
-    const cObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        const el = e.target, target = +el.dataset.target;
-        let cur = 0;
-        const step = target / 50;
-        const t = setInterval(() => {
-          cur += step;
-          if (cur >= target) { el.textContent = target; clearInterval(t); return; }
-          el.textContent = Math.floor(cur);
-        }, 30);
-        cObserver.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('.counter').forEach(el => cObserver.observe(el));
+    // Scroll fade-in
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
   </script>
 </body>
 </html>
